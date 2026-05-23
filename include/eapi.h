@@ -32,31 +32,25 @@
 	
 	/* ====== CNSEDIT ======= */
 	/* CNSEDIT - signal "Attention! Now we will work with the console." */
-	void CNSEDIT_ANSI_RESET() { // Reset all ANSI-styles
+	static inline void CNSEDIT_ANSI_RESET() { // Reset all ANSI-styles
 		printf("\033[0m");
 	}
-	void CNSEDIT_ANSI_RED(char text[100]) {
-		printf("\033[0;31m%99c", text);
+	static inline void CNSEDIT_ANSI_RED(char text[100]) {
+		printf("\033[0;31m%.99c", text);
 	}
-	void CNSEDIT_ANSI_REDBG() {
+	static inline void CNSEDIT_ANSI_REDBG() {
 		printf("\033[0;41m");
 	}
-	void CNSEDIT_ANSI_GREEN(char text[100]) {
-		printf("\033[0;32m%99c", text);
+	static inline void CNSEDIT_ANSI_GREEN(char text[100]) {
+		printf("\033[0;32m%.99c", text);
 	}
-	void CNSEDIT_ANSI_GREENBG() {
+	static inline void CNSEDIT_ANSI_GREENBG() {
 		printf("\033[0;42m");
 	}
-	void CNSEDIT_ANSI_BLUE(char text[100]) {
-		printf("\033[0;34m%99c", text);
+	static inline void CNSEDIT_ANSI_BLUE(char text[100]) {
+		printf("\033[0;34m%.99c", text);
 	}
-	void CNSEDIT_ANSI_BLUEBG() {
-		printf("\033[0;44m");
-	}
-	void CNSEDIT_ANSI_BLUE(char text[100]) {
-		printf("\033[0;34m%99c", text);
-	}
-	void CNSEDIT_ANSI_BLUEBG() {
+	static inline void CNSEDIT_ANSI_BLUEBG() {
 		printf("\033[0;44m");
 	}
 
