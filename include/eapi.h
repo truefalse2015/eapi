@@ -38,49 +38,49 @@
 		printf("\033[0m");
 	}
 	static inline void CNSEDIT_ANSI_BLACK(char text[100]) {
-		printf("\033[0;30m%.99c", text);
+		printf("\033[0;30m%.99s", text);
 	}
 	static inline void CNSEDIT_ANSI_BLACKBG() {
-		printf("\033[0;40m%.99c");	
+		printf("\033[0;40m%.99s");	
 	}
 	static inline void CNSEDIT_ANSI_RED(char text[100]) {
-		printf("\033[0;31m%.99c", text);
+		printf("\033[0;31m%.99s", text);
 	}
 	static inline void CNSEDIT_ANSI_REDBG() {
 		printf("\033[0;41m");
 	}
 	static inline void CNSEDIT_ANSI_GREEN(char text[100]) {
-		printf("\033[0;32m%.99c", text);
+		printf("\033[0;32m%.99s", text);
 	}
 	static inline void CNSEDIT_ANSI_GREENBG() {
 		printf("\033[0;42m");
 	}
 	static inline void CNSEDIT_ANSI_BLUE(char text[100]) {
-		printf("\033[0;34m%.99c", text);
+		printf("\033[0;34m%.99s", text);
 	}
 	static inline void CNSEDIT_ANSI_BLUEBG() {
 		printf("\033[0;44m");
 	}
 	static inline void CNSEDIT_ANSI_YELLOW(char text[100]) {
-		printf("\033[0;33%.99c", text);
+		printf("\033[0;33%.99s", text);
 	}
 	static inline void CNSEDIT_ANSI_YELLOWBG() {
 		printf("\033[0;43m");
 	}
 	static inline void CNSEDIT_ANSI_PURPLE(char text[100]) {
-		printf("\e[0;35m%.99c", text);
+		printf("\e[0;35m%.99s", text);
 	}
 	static inline void CNSEDIT_ANSI_PURPLEBG() {
 		printf("\e[0;45m");
 	}
 	static inline void CNSEDIT_ANSI_CYAN(char text[100]) {
-		printf("\e[0;36m%.99c", text);
+		printf("\e[0;36m%.99s", text);
 	}
 	static inline void CNSEDIT_ANSI_CYANBG() {
 		printf("\e[0;46m");
 	}
 	static inline void CNSEDIT_ANSI_WHITE(char text[100]) {
-		printf("\e[0;37m%.99c", text);
+		printf("\e[0;37m%.99s", text);
 	}
 	static inline void CNSEDIT_ANSI_WHITEBG() {
 		printf("\e[0;47m");
@@ -88,28 +88,28 @@
 
 	// Formating: Bold
 	static inline void CNSEDIT_ANSI_BLACK_BOLD(char text[100]) {
-		printf("\033[1;30m%.99c", text);
+		printf("\033[1;30m%.99s", text);
 	}
 	static inline void CNSEDIT_ANSI_RED_BOLD(char text[100]) {
-		printf("\033[1;31m%.99c", text);
+		printf("\033[1;31m%.99s", text);
 	}
 	static inline void CNSEDIT_ANSI_GREEN_BOLD(char text[100]) {
-		printf("\033[1;32m%.99c", text);
+		printf("\033[1;32m%.99s", text);
 	}
 	static inline void CNSEDIT_ANSI_BLUE_BOLD(char text[100]) {
-		printf("\033[1;34m%.99c", text);
+		printf("\033[1;34m%.99s", text);
 	}
 	static inline void CNSEDIT_ANSI_YELLOW_BOLD(char text[100]) {
-		printf("\033[1;33%.99c", text);
+		printf("\033[1;33%.99s", text);
 	}
 	static inline void CNSEDIT_ANSI_PURPLE_BOLD(char text[100]) {
-		printf("\e[1;35m%.99c", text);
+		printf("\e[1;35m%.99s", text);
 	}
 	static inline void CNSEDIT_ANSI_CYAN_BOLD(char text[100]) {
-		printf("\e[1;36m%.99c", text);
+		printf("\e[1;36m%.99s", text);
 	}
 	static inline void CNSEDIT_ANSI_WHITE_BOLD(char text[100]) {
-		printf("\e[1;37m%.99c", text);
+		printf("\e[1;37m%.99s", text);
 	}
 
 #endif
