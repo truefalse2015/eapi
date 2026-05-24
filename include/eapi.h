@@ -1,6 +1,7 @@
 /* ****************************************
- * It is terrible, but at least it works =D
-**************************************** */
+ * It is terrible, but at least it works
+ * I don't just think it helps beginners — I'm sure of it <3
+ **************************************** */
 
 // Copyright (c) 2026 Elkin Matvey
 /***
@@ -119,13 +120,13 @@
 		printf("\033[1;33%.99s", text);
 	}
 	static inline void CNSEDIT_ANSI_PURPLE_BOLD(char text[100]) {
-		printf("\e[1;35m%.99s", text);
+		printf("\033[1;35m%.99s", text);
 	}
 	static inline void CNSEDIT_ANSI_CYAN_BOLD(char text[100]) {
-		printf("\e[1;36m%.99s", text);
+		printf("\033[1;36m%.99s", text);
 	}
 	static inline void CNSEDIT_ANSI_WHITE_BOLD(char text[100]) {
-		printf("\e[1;37m%.99s", text);
+		printf("\033[1;37m%.99s", text);
 	}
 
 #endif
