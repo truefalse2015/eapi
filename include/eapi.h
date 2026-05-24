@@ -128,6 +128,9 @@
 	static inline void CNSEDIT_ANSI_WHITE_BOLD(char text[100]) {
 		printf("\033[1;37m%.99s", text);
 	}
+	static inline void CNSEDIT_ANSI_BOLDSET() {
+		printf("\033[1m%");
+	}
 
 #endif
 
