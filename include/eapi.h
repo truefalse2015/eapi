@@ -18,6 +18,8 @@
  * CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ * ====== THE EFFORT API PROJECT ======
 */
 
 #ifndef EAPI_H
@@ -103,33 +105,144 @@
 		printf("\e[0;47m");
 	}
 
-	// Formating: Bold
+	// Formatting: Bold
 	static inline void CNSEDIT_ANSI_BLACK_BOLD(char text[100]) {
 		printf("\033[1;30m%.99s", text);
 	}
+
 	static inline void CNSEDIT_ANSI_RED_BOLD(char text[100]) {
 		printf("\033[1;31m%.99s", text);
 	}
+
 	static inline void CNSEDIT_ANSI_GREEN_BOLD(char text[100]) {
 		printf("\033[1;32m%.99s", text);
 	}
+
 	static inline void CNSEDIT_ANSI_BLUE_BOLD(char text[100]) {
 		printf("\033[1;34m%.99s", text);
 	}
+
 	static inline void CNSEDIT_ANSI_YELLOW_BOLD(char text[100]) {
-		printf("\033[1;33%.99s", text);
+		printf("\033[1;33m%.99s", text);
 	}
+
 	static inline void CNSEDIT_ANSI_PURPLE_BOLD(char text[100]) {
 		printf("\033[1;35m%.99s", text);
 	}
+
 	static inline void CNSEDIT_ANSI_CYAN_BOLD(char text[100]) {
 		printf("\033[1;36m%.99s", text);
 	}
+
 	static inline void CNSEDIT_ANSI_WHITE_BOLD(char text[100]) {
 		printf("\033[1;37m%.99s", text);
 	}
+
 	static inline void CNSEDIT_ANSI_BOLDSET() {
 		printf("\033[1m%");
+	}
+	
+	// Formatting: Underline
+	static inline void CNSEDIT_ANSI_BLACK_ULINE(char text[100]) {
+		printf("\033[4;30m%.99s", text);
+	}
+
+	static inline void CNSEDIT_ANSI_RED_ULINE(char text[100]) {
+		printf("\033[4;31m%.99s", text);
+	}
+
+	static inline void CNSEDIT_ANSI_GREEN_ULINE(char text[100]) {
+		printf("\033[4;32m%.99s", text);
+	}
+
+	static inline void CNSEDIT_ANSI_BLUE_ULINE(char text[100]) {
+		printf("\033[4;34m%.99s", text);
+	}
+	
+	static inline void CNSEDIT_ANSI_YELLOW_ULINE(char text[100]) {
+		printf("\033[4;33m%.99s", text);
+	}
+
+	static inline void CNSEDIT_ANSI_PURPLE_ULINE(char text[100]) {
+		printf("\033[4;35m%.99s", text);
+	}
+
+	static inline void CNSEDIT_ANSI_CYAN_ULINE(char text[100]) {
+		printf("\033[4;36m%.99s", text);
+	}
+
+	static inline void CNSEDIT_ANSI_WHITE_ULINE(char text[100]) {
+		printf("\033[4;37m%.99s", text);
+	}
+
+	static inline void CNSEDIT_ANSI_ULINESET() {
+		printf("\033[4m%");
+	}
+
+	// Formatting: High Intensity
+	static inline void CNSEDIT_ANSI_BLACK_HINT(char text[100]) {
+		printf("\033[0;90m%.99s", text);
+	}
+
+	static inline void CNSEDIT_ANSI_RED_HINT(char text[100]) {
+		printf("\033[0;91m%.99s", text);
+	}
+
+	static inline void CNSEDIT_ANSI_GREEN_HINT(char text[100]) {
+		printf("\033[0;92m%.99s", text);
+	}
+
+	static inline void CNSEDIT_ANSI_BLUE_HINT(char text[100]) {
+		printf("\033[0;94m%.99s", text);
+	}
+
+	static inline void CNSEDIT_ANSI_YELLOW_HINT(char text[100]) {
+		printf("\033[0;93m%.99s", text);
+	}
+
+	static inline void CNSEDIT_ANSI_PURPLE_HINT(char text[100]) {
+		printf("\033[0;95m%.99s", text);
+	}
+
+	static inline void CNSEDIT_ANSI_CYAN_HINT(char text[100]) {
+		printf("\033[0;96m%.99s", text);
+	}
+
+	static inline void CNSEDIT_ANSI_WHITE_HINT(char text[100]) {
+		printf("\033[0;97m%.99s", text);
+	}
+
+	// Formatting: Bold High Intensity
+	static inline void CNSEDIT_ANSI_BLACK_BHI(char text[100]) {
+		printf("\033[1;90m%.99s", text);
+	}
+
+	static inline void CNSEDIT_ANSI_RED_BHI(char text[100]) {
+		printf("\033[1;91m%.99s", text);
+	}
+
+	static inline void CNSEDIT_ANSI_GREEN_BHI(char text[100]) {
+		printf("\033[1;92m%.99s", text);
+	}
+
+	static inline void CNSEDIT_ANSI_BLUE_BHI(char text[100]) {
+		printf("\033[1;94m%.99s", text);
+	}
+
+	static inline void CNSEDIT_ANSI_YELLOW_BHI(char text[100]) {
+		printf("\033[1;93m%.99s", text);
+	}
+
+	static inline void CNSEDIT_ANSI_PURPLE_BHI(char text[100]) {
+		printf("\033[1;95m%.99s", text);
+	}
+
+	static inline void CNSEDIT_ANSI_CYAN_BHI(char text[100]) {
+		printf("\033[1;96m%.99s", text);
+	}
+	
+	static inline void CNSEDIT_ANSI_WHITE_BHI(char text[100]) {
+		printf("\033[1;97m%.99s", text);
 	}
 
 #endif
