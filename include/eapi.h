@@ -74,7 +74,7 @@
 	}
 
 	static inline void CNSEDIT_ANSI_YELLOW(char text[100]) {
-		printf("\033[0;33%.99s", text);
+		printf("\033[0;33m%.99s", text);
 	}
 
 	static inline void CNSEDIT_ANSI_YELLOWBG() {
