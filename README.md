@@ -1,4 +1,4 @@
-![Unable to access tofile with logo](assets/logo.png)
+<img src="images/demo.png" alt="eAPI Demo" width="400">
 
 [YEEEEAH!!!!] NEW VERSION EFFORT API BETA BUILD 250526 (BUILD 25052026)
 
