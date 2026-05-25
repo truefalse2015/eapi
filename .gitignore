@@ -4,3 +4,5 @@
 .so
 .deb
 .AppImage
+.elf
+.cfg
