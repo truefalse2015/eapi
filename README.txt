@@ -3,6 +3,8 @@ The Effort API (eAPI)
 Effort API is simple header-only library for working with console, filesystem and etc.
 It is also defined as an API.
 
+Author: Elkin Matvey (Елькин Матвей) from Russian Federation.
+
 DOCUMENTATION
 =======
 Full documentation available on GitHub:
