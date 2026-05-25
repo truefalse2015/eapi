@@ -1,3 +1,5 @@
+![Unable to access tofile with logo](assets/logo.png)
+
 [YEEEEAH!!!!] NEW VERSION EFFORT API BETA BUILD 250526 (BUILD 25052026)
 
 The Effort API (eAPI)
