@@ -14,16 +14,15 @@ when implementing a project with this library.
 HOW TO DOWNLOAD LIBRARY?
 ======
 You can download .zip with full repository, by clicking the "Code" button in my GitHub
-repository (web version), and then clicking "Download ZIP." This depends on your GitHub interface.
+repository (web version), and then clicking "Download ZIP". This depends on your GitHub interface.
 
 HOW TO CONTACT ME?
 ======
-Unfortunately, for security reasons, I can't provide a contact link to protect myself from
-scams. However, you can make corrections and improvements to the code through Pull Requests.
+Email: wolfzoneteam@gmail.com
+By the way, you can make corrections and improvements to the code through Pull Requests.
 I welcome all contributions! <3
-
 P. S. I forgot to mention that there will be some useless topics later, but I think you'll
-find them interesting.
+find them interesting. =)
 
 It doesn't matter who you are!
 =======
