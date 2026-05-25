@@ -10,7 +10,8 @@ Author: Elkin Matvey (Елькин Матвей) from Russian Federation.
 DOCUMENTATION
 =======
 Full documentation available on GitHub:
-https://github.com/truefalse2015/eapi/blob/main/documentation/DOCUMENTATION.txt
+https://github.com/truefalse2015/eapi/blob/main/documentation/DOCUMENTATION.md
+
 In this documentation, anyone can read about how to use the library, what functions it
 has, what needs to be installed, what the function names mean, and what warnings are present
 when implementing a project with this library.
