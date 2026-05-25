@@ -1,4 +1,4 @@
-<img src="images/demo.png" alt="eAPI Demo" width="400">
+<img src="assets/logo.png" alt="Oops! Unable to access for file 'assets/logo.png'" width="400">
 
 [YEEEEAH!!!!] NEW VERSION EFFORT API BETA BUILD 250526 (BUILD 25052026)
 
