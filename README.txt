@@ -1,3 +1,5 @@
+[YEEEEAH!!!!] NEW VERSION EFFORT API BETA BUILD 250526 (BUILD 25052026)
+
 The Effort API (eAPI)
 =======
 Effort API is simple header-only library for working with console, filesystem and etc.
