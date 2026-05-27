@@ -1,137 +1,117 @@
-# eAPI Documentation
+# Effort API (eAPI) — Documentation 📚
 
-**Effort API (eAPI)** — a lightweight, header-only C library providing cross-platform console styling and basic file system utilities.
-
----
-
-## Table of Contents
-
-- [Overview](#overview)
-- [License](#license)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Usage](#usage)
-- [API Reference](#api-reference)
-  - [Console Module (CNSEDIT)](#console-module-cnsedit)
-  - [File System Module (FS)](#file-system-module-fs)
-- [Platform Notes](#platform-notes)
-- [Contributing](#contributing)
+> **Version:** 0.99 (Build 27052026)  
+> **License:** MIT  
+> **Author:** Elkin Matvey  
+> **Repository:** `truefalse2015/eAPI`  
+> **Language:** Pure C, Header-Only, Cross-Platform  
 
 ---
 
-## Overview
+## 📋 Table of Contents
 
-eAPI is designed for developers who need simple, portable console output formatting and file existence checks without external dependencies. The library uses `static inline` functions for zero-linkage overhead and follows a "nothing breaks" philosophy.
-
-**Key features:**
-- Header-only distribution (`eapi.h`)
-- Cross-platform ANSI color support (Windows 10+, Linux, macOS)
-- Safe string handling with bounded output functions
-- C++ compatibility via `extern "C"`
-
----
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-> Copyright (c) 2026 Elkin Matvey  
-> Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  
-> The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+1. [Overview](#-overview)
+2. [Features](#-features)
+3. [Quick Start](#-quick-start)
+4. [Module: CNSEDIT (Console)](#-module-cnsedit-console)
+5. [Module: FS (Filesystem)](#-module-fs-filesystem)
+6. [Module: MATH (Mathematics)](#-module-math-mathematics)
+7. [Platform Notes](#-platform-notes)
+8. [Best Practices](#-best-practices)
+9. [Troubleshooting](#-troubleshooting)
+10. [License](#-license)
 
 ---
 
-## Requirements
+## ✨ Overview
 
-- C99 or later
-- Standard library headers: `<stdio.h>`, `<string.h>`
-- Platform-specific headers (included automatically):
-  - Windows: `<windows.h>`
-  - Linux/macOS: `<unistd.h>`, `<sys/stat.h>`
+**Effort API (eAPI)** is a lightweight, header-only C library designed to simplify common development tasks for beginners and experienced programmers alike.
 
-**Compiler support:** GCC, Clang, MSVC (Windows 10 SDK or later)
+eAPI follows three core principles:
+- 🔹 **Nothing breaks** — Simple, predictable functions with minimal dependencies
+- 🔹 **Just `#include`** — No build system, no linking, no configuration
+- 🔹 **Cross-platform by design** — Works on Windows, Linux, and macOS
+
+### What eAPI Provides
+
+| Module | Purpose |
+|--------|---------|
+| 🔹 **CNSEDIT** | Console output: colors, formatting, cursor control |
+| 🔹 **FS** | Filesystem utilities: check if file/directory exists |
+| 🔹 **MATH** | Basic arithmetic and math functions for `int` and `double` |
 
 ---
 
-## Installation
+## 🚀 Features
 
-1. Download or clone `eapi.h` from the repository.
-2. Place the file in your project directory or include path.
-3. Include the header in your source file:
+✅ **Header-only** — Single file: `eapi.h`. Just copy and include.  
+✅ **No external dependencies** — Uses only standard C library + platform APIs.  
+✅ **Cross-platform** — Automatic detection: `_WIN32`, `__linux__`, `__APPLE__`.  
+✅ **Static inline functions** — Zero runtime overhead, no linking issues.  
+✅ **Beginner-friendly API** — Clear function names, consistent patterns.  
+✅ **Safe by default** — Buffer limits (`%.99s`, `%.499s`), error checks.  
 
+---
+
+## ⚡ Quick Start
+
+### 1. Download
+Save `eapi.h` to your project folder.
+
+### 2. Include
 ```c
 #include "eapi.h"
 ```
 
-No compilation or linking steps are required.
+### 3. Compile
+```bash
+# Linux/macOS
+gcc main.c -o main -lm
 
----
+# Windows (MinGW)
+gcc main.c -o main.exe
+```
 
-## Usage
-
-### Basic Example
-
+### 4. Hello, Colored World!
 ```c
-#include <stdio.h>
 #include "eapi.h"
 
 int main(void) {
-    // Print colored text
-    CNSEDIT_ANSI_GREEN_BOLD("Success: Operation completed.");
+    CNSEDIT_ANSI_GREEN("Hello, ");
+    CNSEDIT_ANSI_RED_BOLD("World!");
     CNSEDIT_ANSI_RESET();
     printf("\n");
-
-    // Check file existence
-    if (FS_OBJ_EXISTS("config.txt")) {
-        CNSEDIT_IO_OUTPUT("Configuration file found.");
-    } else {
-        CNSEDIT_ANSI_RED("Error: config.txt not found.");
-        CNSEDIT_ANSI_RESET();
-    }
-
     return 0;
 }
 ```
 
-### Compilation
-
-```bash
-# Linux/macOS
-gcc -std=c99 -Wall -Wextra main.c -o app
-
-# Windows (MinGW)
-gcc -std=c99 -Wall -Wextra main.c -o app.exe
-
-# Windows (MSVC)
-cl /std:c11 main.c
-```
+**Output:**  
+`Hello, `**`World!`** (in green + red bold)
 
 ---
 
-## API Reference
+## 🎨 Module: CNSEDIT (Console)
 
-### Console Module (CNSEDIT)
+> Signal: *"Now we will work with the console."*
 
-All console functions accept a `const char *text` parameter and output formatted text to `stdout`. Most functions automatically limit output to 99 characters for safety.
+### 🔹 Text Colors (Normal)
 
-#### Color Functions
+| Function | Description | Example |
+|----------|-------------|---------|
+| `CNSEDIT_ANSI_BLACK(const char *text)` | Print black text | `CNSEDIT_ANSI_BLACK("Error");` |
+| `CNSEDIT_ANSI_RED(const char *text)` | Print red text | `CNSEDIT_ANSI_RED("Warning!");` |
+| `CNSEDIT_ANSI_GREEN(const char *text)` | Print green text | `CNSEDIT_ANSI_GREEN("OK");` |
+| `CNSEDIT_ANSI_BLUE(const char *text)` | Print blue text | `CNSEDIT_ANSI_BLUE("Info");` |
+| `CNSEDIT_ANSI_YELLOW(const char *text)` | Print yellow text | `CNSEDIT_ANSI_YELLOW("Notice");` |
+| `CNSEDIT_ANSI_PURPLE(const char *text)` | Print purple text | `CNSEDIT_ANSI_PURPLE("Debug");` |
+| `CNSEDIT_ANSI_CYAN(const char *text)` | Print cyan text | `CNSEDIT_ANSI_CYAN("Tip");` |
+| `CNSEDIT_ANSI_WHITE(const char *text)` | Print white text | `CNSEDIT_ANSI_WHITE("Normal");` |
 
-| Function | Description |
-|----------|-------------|
-| `CNSEDIT_ANSI_BLACK(const char *text)` | Print text in black foreground |
-| `CNSEDIT_ANSI_RED(const char *text)` | Print text in red foreground |
-| `CNSEDIT_ANSI_GREEN(const char *text)` | Print text in green foreground |
-| `CNSEDIT_ANSI_BLUE(const char *text)` | Print text in blue foreground |
-| `CNSEDIT_ANSI_YELLOW(const char *text)` | Print text in yellow foreground |
-| `CNSEDIT_ANSI_PURPLE(const char *text)` | Print text in purple (magenta) foreground |
-| `CNSEDIT_ANSI_CYAN(const char *text)` | Print text in cyan foreground |
-| `CNSEDIT_ANSI_WHITE(const char *text)` | Print text in white foreground |
-
-#### Background Color Functions
+### 🔹 Background Colors
 
 | Function | Description |
 |----------|-------------|
-| `CNSEDIT_ANSI_BLACKBG(void)` | Set black background (affects subsequent output) |
+| `CNSEDIT_ANSI_BLACKBG(void)` | Set black background |
 | `CNSEDIT_ANSI_REDBG(void)` | Set red background |
 | `CNSEDIT_ANSI_GREENBG(void)` | Set green background |
 | `CNSEDIT_ANSI_BLUEBG(void)` | Set blue background |
@@ -140,90 +120,311 @@ All console functions accept a `const char *text` parameter and output formatted
 | `CNSEDIT_ANSI_CYANBG(void)` | Set cyan background |
 | `CNSEDIT_ANSI_WHITEBG(void)` | Set white background |
 
-#### Formatting Functions
+### 🔹 Formatting: Bold
 
 | Function | Description |
 |----------|-------------|
-| `CNSEDIT_ANSI_<COLOR>_BOLD(const char *text)` | Print text in bold with specified color |
-| `CNSEDIT_ANSI_<COLOR>_ULINE(const char *text)` | Print text underlined with specified color |
-| `CNSEDIT_ANSI_<COLOR>_HINT(const char *text)` | Print text in high-intensity (bright) color |
-| `CNSEDIT_ANSI_<COLOR>_BHI(const char *text)` | Print text in bold high-intensity color |
-| `CNSEDIT_ANSI_BOLDSET(void)` | Enable bold formatting for subsequent output |
-| `CNSEDIT_ANSI_ULINESET(void)` | Enable underline formatting for subsequent output |
-| `CNSEDIT_ANSI_FLASHING(const char *text)` | Print text with flashing attribute (terminal-dependent) |
+| `CNSEDIT_ANSI_RED_BOLD(const char *text)` | Bold red text |
+| `CNSEDIT_ANSI_GREEN_BOLD(const char *text)` | Bold green text |
+| `...` | *(Same pattern for all 8 colors)* |
+| `CNSEDIT_ANSI_BOLDSET(void)` | Enable bold mode (without text) |
 
-#### Utility Functions
+### 🔹 Formatting: Underline
 
 | Function | Description |
 |----------|-------------|
-| `CNSEDIT_ANSI_RESET(void)` | Reset all text attributes to default |
-| `CNSEDIT_IO_OUTPUT(const char *text)` | Print text safely (max 499 characters) without formatting |
+| `CNSEDIT_ANSI_RED_ULINE(const char *text)` | Underlined red text |
+| `...` | *(Same pattern for all 8 colors)* |
+| `CNSEDIT_ANSI_ULINESET(void)` | Enable underline mode |
 
-**Note:** Replace `<COLOR>` with one of: `BLACK`, `RED`, `GREEN`, `BLUE`, `YELLOW`, `PURPLE`, `CYAN`, `WHITE`.
+### 🔹 High Intensity (Bright) Colors
+
+| Function | Description |
+|----------|-------------|
+| `CNSEDIT_ANSI_RED_HINT(const char *text)` | Bright red text |
+| `...` | *(Same pattern for all 8 colors)* |
+
+### 🔹 Bold + High Intensity
+
+| Function | Description |
+|----------|-------------|
+| `CNSEDIT_ANSI_RED_BHI(const char *text)` | Bold + bright red |
+| `...` | *(Same pattern for all 8 colors)* |
+
+### 🔹 Special Formatting
+
+| Function | Description |
+|----------|-------------|
+| `CNSEDIT_ANSI_FLASHING(const char *text)` | Flashing text (terminal-dependent) |
+| `CNSEDIT_ANSI_RESET(void)` | **Reset all styles** — always call after colored output |
+| `CNSEDIT_IO_OUTPUT(const char *text)` | Safe print with 499-char limit |
+
+### 🔹 Cursor Control (SIMPLE)
+
+| Function | Description | Example |
+|----------|-------------|---------|
+| `CNSEDIT_ANSI_CURSOR_LEFT(int sym)` | Move cursor left N positions | `CNSEDIT_ANSI_CURSOR_LEFT(5);` |
+| `CNSEDIT_ANSI_CURSOR_RIGHT(int sym)` | Move cursor right N positions | `CNSEDIT_ANSI_CURSOR_RIGHT(3);` |
+| `CNSEDIT_ANSI_CURSOR_UP(int column)` | Move cursor up N lines | `CNSEDIT_ANSI_CURSOR_UP(2);` |
+| `CNSEDIT_ANSI_CURSOR_DOWN(int column)` | Move cursor down N lines | `CNSEDIT_ANSI_CURSOR_DOWN(1);` |
+| `CNSEDIT_ANSI_CURSOR_HOME(void)` | Move cursor to top-left (0,0) | `CNSEDIT_ANSI_CURSOR_HOME();` |
+| `CNSEDIT_ANSI_CURSOR_CUSTOM(int row, int col)` | Move to specific position | `CNSEDIT_ANSI_CURSOR_CUSTOM(10, 20);` |
+| `CNSEDIT_ANSI_CURSOR_SAVE(void)` | Save current cursor position | `CNSEDIT_ANSI_CURSOR_SAVE();` |
+| `CNSEDIT_ANSI_CURSOR_PREVIOUS(void)` | Restore saved position | `CNSEDIT_ANSI_CURSOR_PREVIOUS();` |
+| `CNSEDIT_ANSI_CLEAR(void)` | Clear entire screen | `CNSEDIT_ANSI_CLEAR();` |
+| `CNEDIT_ANSI_LINECURSCLEAR(void)` | Clear from cursor to end of line | `CNEDIT_ANSI_LINECURSCLEAR();` |
+| `CNEDIT_ANSI_CURSOR_FLASHING_ON(void)` | Enable cursor blinking | `CNEDIT_ANSI_CURSOR_FLASHING_ON();` |
+| `CNEDIT_ANSI_CURSOR_FLASHING_OFF(void)` | Disable cursor blinking | `CNEDIT_ANSI_CURSOR_FLASHING_OFF();` |
+
+### 🔹 Cursor Control (PROFESSIONAL)
+
+Same functions as SIMPLE, but with `_P` suffix and extra `hide_or_show` parameter:
+
+```c
+// Hide cursor while moving
+CNSEDIT_ANSI_CURSOR_LEFT_P(5, 'h');  // 'h' = hide
+CNSEDIT_ANSI_CURSOR_LEFT_P(5, 'x');  // any other char = keep visibility
+```
+
+| Function | Extra Parameter |
+|----------|----------------|
+| `CNSEDIT_ANSI_CURSOR_LEFT_P(int sym, char hide_or_show)` | `'h'` to hide cursor |
+| `CNSEDIT_ANSI_CURSOR_RIGHT_P(...)` | Same pattern |
+| `...` | *(All cursor functions have `_P` variants)* |
 
 ---
 
-### File System Module (FS)
+## 📁 Module: FS (Filesystem)
 
-| Function | Signature | Description |
-|----------|-----------|-------------|
-| `FS_OBJ_EXISTS` | `static inline int FS_OBJ_EXISTS(const char *filename)` | Checks if a file exists and is accessible. Returns `1` if the file exists, `0` otherwise. Uses `fopen` on Windows and `access` on POSIX systems. |
+> Signal: *"Attention! Now we will work with the filesystem."*
 
-**Parameters:**
-- `filename` — Path to the file (null-terminated string). Maximum effective length: 499 characters.
+### 🔹 Check if File/Directory Exists
 
-**Return value:**
-- `1` — File exists and is readable.
-- `0` — File does not exist or cannot be accessed.
+```c
+int FS_OBJ_EXISTS(const char *filename);
+```
+
+| Parameter | Description |
+|-----------|-------------|
+| `filename` | Path to file or directory (max 499 chars) |
+
+**Returns:**
+- `1` (true) — object exists and is accessible
+- `0` (false) — object does not exist or access denied
 
 **Example:**
 ```c
-if (FS_OBJ_EXISTS("data.log")) {
-    // Proceed with file operations
+if (FS_OBJ_EXISTS("config.txt")) {
+    CNSEDIT_ANSI_GREEN("Config found!\n");
+} else {
+    CNSEDIT_ANSI_RED("Config missing!\n");
 }
+```
+
+**Safety Notes:**
+- ✅ Uses `snprintf` with size limit to prevent buffer overflow
+- ✅ On Windows: uses `fopen()` check
+- ✅ On Unix: uses `access(path, F_OK)`
+
+---
+
+## 🔢 Module: MATH (Mathematics)
+
+> Simple arithmetic for `int` and `double` types.
+
+### 🔹 Basic Operations (int)
+
+| Function | Description | Example | Returns |
+|----------|-------------|---------|---------|
+| `MATH_BASE_PLUS(int a, int b)` | Addition | `MATH_BASE_PLUS(2, 3)` | `5` |
+| `MATH_BASE_MINUS(int a, int b)` | Subtraction | `MATH_BASE_MINUS(10, 4)` | `6` |
+| `MATH_BASE_MULTIPLY(int a, int b)` | Multiplication | `MATH_BASE_MULTIPLY(3, 4)` | `12` |
+| `MATH_BASE_DIVISION(int a, int b)` | Division | `MATH_BASE_DIVISION(20, 5)` | `4` |
+
+### 🔹 Basic Operations (double)
+
+| Function | Description | Example | Returns |
+|----------|-------------|---------|---------|
+| `MATH_BASE_PLUS_DOUBLE(double a, double b)` | Addition | `MATH_BASE_PLUS_DOUBLE(2.5, 1.5)` | `4.0` |
+| `MATH_BASE_MINUS_DOUBLE(double a, double b)` | Subtraction | `MATH_BASE_MINUS_DOUBLE(10.0, 3.2)` | `6.8` |
+| `MATH_BASE_MULTIPLY_DOUBLE(double a, double b)` | Multiplication | `MATH_BASE_MULTIPLY_DOUBLE(2.0, 3.5)` | `7.0` |
+| `MATH_BASE_DIVISION_DOUBLE(double a, double b)` | Division | `MATH_BASE_DIVISION_DOUBLE(10.0, 4.0)` | `2.5` |
+
+### 🔹 Advanced Functions (NS = "Not Standard")
+
+| Function | Description | Example | Returns |
+|----------|-------------|---------|---------|
+| `MATH_NS_SQRT(int num)` | Square root (int) | `MATH_NS_SQRT(16)` | `4` |
+| `MATH_NS_SQRT_DOUBLE(double num)` | Square root (double) | `MATH_NS_SQRT_DOUBLE(2.0)` | `~1.414` |
+| `MATH_NS_POWER(int num, int power)` | Exponentiation (int) | `MATH_NS_POWER(2, 3)` | `8` |
+| `MATH_NS_POWER_DOUBLE(double num, double power)` | Exponentiation (double) | `MATH_NS_POWER_DOUBLE(2.0, 0.5)` | `~1.414` |
+
+> ⚠️ **Note:** These functions use `sqrt()` and `pow()` from `<math.h>`. Link with `-lm` on Linux/macOS.
+
+---
+
+## 🖥️ Platform Notes
+
+### Windows
+- ✅ ANSI colors work on **Windows 10 (build 10586+)** and later
+- ⚠️ On Windows 7/8: ANSI codes may display as plain text
+- 🔧 eAPI auto-enables `ENABLE_VIRTUAL_TERMINAL_PROCESSING` via `_eapi_cnsedit_win_init()`
+- 📦 No extra libraries needed — uses `windows.h`
+
+### Linux / macOS
+- ✅ ANSI codes work in most modern terminals (GNOME Terminal, iTerm2, etc.)
+- 📦 Requires `<unistd.h>` for `access()` function
+- 🔗 Compile with `-lm` to link math library:  
+  ```bash
+  gcc main.c -o main -lm
+  ```
+
+### Cross-Platform Tips
+```c
+// Always reset styles after colored output
+CNSEDIT_ANSI_RED("Error");
+CNSEDIT_ANSI_RESET();
+
+// Use FS_OBJ_EXISTS instead of platform-specific checks
+if (FS_OBJ_EXISTS("data.txt")) { /* ... */ }
+
+// For math functions, remember to link -lm on Unix
 ```
 
 ---
 
-## Platform Notes
+## 🛡️ Best Practices
 
-### Windows
+### ✅ Do
+```c
+// 1. Always reset after colored output
+CNSEDIT_ANSI_GREEN("Success");
+CNSEDIT_ANSI_RESET();
 
-- ANSI color support requires Windows 10 version 1511 (build 10586) or later.
-- The function `_eapi_cnsedit_win_init()` enables Virtual Terminal Processing automatically on first use.
-- On older Windows versions, ANSI escape sequences may be printed as plain text. No runtime error occurs.
+// 2. Check return values for FS functions
+if (FS_OBJ_EXISTS("file.txt") == 1) { /* ... */ }
 
-### Linux / macOS
+// 3. Use const char* for string literals
+CNSEDIT_ANSI_BLUE("Hello");  // OK
 
-- ANSI escape sequences are supported by default in most terminal emulators.
-- The `<unistd.h>` header is required for `access()` in the `FS_OBJ_EXISTS` function.
+// 4. Link math library on Unix
+// gcc main.c -lm
+```
 
-### C++ Compatibility
+### ❌ Avoid
+```c
+// 1. Forgetting to reset (text stays colored)
+CNSEDIT_ANSI_RED("Warning");
+printf("This will also be red!\n");  // Oops!
 
-The library uses `extern "C"` guards to allow inclusion in C++ projects without name mangling.
+// 2. Passing NULL to text functions
+CNSEDIT_ANSI_GREEN(NULL);  // Undefined behavior
+
+// 3. Using MATH_BASE_DIVISION with zero
+MATH_BASE_DIVISION(10, 0);  // Crash!
+
+// 4. Assuming ANSI works everywhere
+// Test on target platform!
+```
+
+### 🔁 Consistency Pattern
+All CNSEDIT functions follow this pattern:
+```c
+// 1. Initialize platform-specific settings (Windows only)
+_eapi_cnsedit_win_init();
+
+// 2. Print ANSI code + formatted text
+printf("\033[0;31m%.99s", text);  // Red, max 99 chars
+```
 
 ---
 
-## Contributing
+## 🐛 Troubleshooting
 
-Contributions are welcome. To report issues or suggest improvements:
+| Problem | Possible Cause | Solution |
+|---------|---------------|----------|
+| 🔹 Colors show as plain text on Windows | Old Windows version or terminal | Use Windows Terminal / Update to Win10 10586+ |
+| 🔹 `undefined reference to 'sqrt'` | Missing math library link | Add `-lm` to gcc command |
+| 🔹 Cursor doesn't move | Terminal doesn't support ANSI | Try different terminal (xterm, gnome-terminal) |
+| 🔹 Buffer overflow warning | Text > 99/499 chars | Use shorter strings or split output |
+| 🔹 `FS_OBJ_EXISTS` returns false for existing file | Permission issue | Check file permissions / run as admin |
 
-1. Open an issue on the [GitHub repository](https://github.com/truefalse2015/eapi).
-2. Provide a clear description and, if applicable, a minimal reproducible example.
-3. For code contributions, ensure changes are compatible with C99 and do not introduce external dependencies.
+### Debug Mode (Optional)
+Add this to your code to see platform detection:
+```c
+#ifdef _WIN32
+    printf("Running on Windows\n");
+#elif __linux__
+    printf("Running on Linux\n");
+#elif __APPLE__
+    printf("Running on macOS\n");
+#endif
+```
 
 ---
 
-## Version
+## 📜 License
 
-**eAPI Beta-250526** — Initial public release.
+```
+MIT License
+
+Copyright (c) 2026 Elkin Matvey
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+### Attribution
+If you use eAPI in your project, please include:
+```
+This project uses Effort API (eAPI) by Elkin Matvey.
+https://github.com/truefalse2015/eAPI
+```
 
 ---
 
-## Author
+## 🤝 Contributing
 
-Elkin Matvey ([truefalse2015](https://github.com/truefalse2015))
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/my-idea`
+3. Commit changes: `git commit -m "Add: new feature"`
+4. Push: `git push origin feature/my-idea`
+5. Open a Pull Request
+
+### Code Style
+- 🔹 Use `static inline` for all functions
+- 🔹 Prefix internal functions with `_eapi_`
+- 🔹 Document public functions with comments
+- 🔹 Keep buffer limits consistent (`%.99s`, `%.499s`)
 
 ---
 
-*Documentation generated for eAPI Beta-250526. Subject to change in future releases.*
+## 📬 Contact
+
+| Method | Details |
+|--------|---------|
+| 🔹 **GitHub** | [`truefalse2015/eAPI`](https://github.com/truefalse2015/eAPI) |
+| 🔹 **Email** | `truefalsesofts@gmail.com` |
+
+> 💡 **Note:** No phone / VK due to spam and international audience.
+
+---
+
+*Documentation generated for eAPI v0.99 (Build 27052026)*  
+*Last updated: 27 May 2026*  
+*Made by Elkin Matvey*
