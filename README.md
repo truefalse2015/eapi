@@ -1,26 +1,19 @@
-<img src="assets/logo_now.png" alt="Oops! Unable to access for file 'assets/logo.png'" width="100">
-
-[YEEEEAH!!!!] NEW VERSION EFFORT API BETA BUILD 250526 (BUILD 25052026)
+<img src="assets/logo_now.png" alt="Oops! Unable to access for file 'assets/logo.png'" width="300">
 
 The Effort API (eAPI)
 
 +++++++++
 
+(Full documentation available on GitHub:
+https://github.com/truefalse2015/eapi/blob/main/documentation/DOCUMENTATION.md
+In this documentation, anyone can read about how to use the library, what functions it
+has, what needs to be installed, what the function names mean, and what warnings are present
+when implementing a project with this library.)
+
 Effort API is simple header-only library for working with console, filesystem and etc.
 It is also defined as an API.
 
 Author: Elkin Matvey (Елькин Матвей) from Russian Federation.
-
-DOCUMENTATION
-
-+++++++++
-
-Full documentation available on GitHub:
-https://github.com/truefalse2015/eapi/blob/main/documentation/DOCUMENTATION.md
-
-In this documentation, anyone can read about how to use the library, what functions it
-has, what needs to be installed, what the function names mean, and what warnings are present
-when implementing a project with this library.
 
 HOW TO DOWNLOAD LIBRARY?
 
