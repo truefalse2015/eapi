@@ -46,10 +46,11 @@ extern "C" {
 	*        because it would complicate the code significantly.
 	*        Sorry. =( */
 
+
 	static inline void _eapi_cnsedit_win_init(void) {
 		static int _eapi_win_ansi_enabled = 0;
 		if (_eapi_win_ansi_enabled) return;
-		
+
 		HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
 		if (hOut == INVALID_HANDLE_VALUE) return;
 		
@@ -65,267 +66,267 @@ extern "C" {
 	/* CNSEDIT - signal "Now we will work with the console." */
 
 	// Normal text and background commands
-	static inline void CNSEDIT_ANSI_RESET(void) {
+	static inline void eapi_RESET(void) {
 		_eapi_cnsedit_win_init();
 		printf("\033[0m");
 	}
 
-	static inline void CNSEDIT_ANSI_BLACK(char text[100]) {
+	static inline void eapi_black(char text[100]) {
 		_eapi_cnsedit_win_init();
 		printf("\033[0;30m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_BLACKBG(void) {
+	static inline void eapi_blackBG(void) {
 		_eapi_cnsedit_win_init();
 		printf("\033[0;40m");
 	}
 
-	static inline void CNSEDIT_ANSI_RED(char text[100]) {
+	static inline void eapi_red(char text[100]) {
 		_eapi_cnsedit_win_init();
 		printf("\033[0;31m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_REDBG(void) {
+	static inline void eapi_redBG(void) {
 		_eapi_cnsedit_win_init();
 		printf("\033[0;41m");
 	}
 
-	static inline void CNSEDIT_ANSI_GREEN(char text[100]) {
+	static inline void eapi_green(char text[100]) {
 		_eapi_cnsedit_win_init();
 		printf("\033[0;32m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_GREENBG(void) {
+	static inline void eapi_greenBG(void) {
 		_eapi_cnsedit_win_init();
 		printf("\033[0;42m");
 	}
 
-	static inline void CNSEDIT_ANSI_BLUE(char text[100]) {
+	static inline void eapi_blue(char text[100]) {
 		_eapi_cnsedit_win_init();
 		printf("\033[0;34m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_BLUEBG(void) {
+	static inline void eapi_blueBG(void) {
 		_eapi_cnsedit_win_init();
 		printf("\033[0;44m");
 	}
 
-	static inline void CNSEDIT_ANSI_YELLOW(char text[100]) {
+	static inline void eapi_yellow(char text[100]) {
 		_eapi_cnsedit_win_init();
 		printf("\033[0;33m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_YELLOWBG(void) {
+	static inline void eapi_yellowBG(void) {
 		_eapi_cnsedit_win_init();
 		printf("\033[0;43m");
 	}
 
-	static inline void CNSEDIT_ANSI_PURPLE(char text[100]) {
+	static inline void eapi_purple(char text[100]) {
 		_eapi_cnsedit_win_init();
 		printf("\033[0;35m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_PURPLEBG(void) {
+	static inline void eapi_purpleBG(void) {
 		_eapi_cnsedit_win_init();
 		printf("\033[0;45m");
 	}
 
-	static inline void CNSEDIT_ANSI_CYAN(char text[100]) {
+	static inline void eapi_cyan(char text[100]) {
 		_eapi_cnsedit_win_init();
 		printf("\033[0;36m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_CYANBG(void) {
+	static inline void eapi_cyanBG(void) {
 		_eapi_cnsedit_win_init();
 		printf("\033[0;46m");
 	}
 
-	static inline void CNSEDIT_ANSI_WHITE(char text[100]) {
+	static inline void eapi_white(char text[100]) {
 		_eapi_cnsedit_win_init();
 		printf("\033[0;37m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_WHITEBG(void) {
+	static inline void eapi_whiteBG(void) {
 		_eapi_cnsedit_win_init();
 		printf("\033[0;47m");
 	}
 
 	// Formatting: Bold
-	static inline void CNSEDIT_ANSI_BLACK_BOLD(char text[100]) {
+	static inline void eapi_black_BOLD(char text[100]) {
 		_eapi_cnsedit_win_init();
 		printf("\033[1;30m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_RED_BOLD(char text[100]) {
+	static inline void eapi_red_BOLD(char text[100]) {
 		_eapi_cnsedit_win_init();
 		printf("\033[1;31m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_GREEN_BOLD(char text[100]) {
+	static inline void eapi_green_BOLD(char text[100]) {
 		_eapi_cnsedit_win_init();
 		printf("\033[1;32m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_BLUE_BOLD(char text[100]) {
+	static inline void eapi_blue_BOLD(char text[100]) {
 		_eapi_cnsedit_win_init();
 		printf("\033[1;34m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_YELLOW_BOLD(char text[100]) {
+	static inline void eapi_yellow_BOLD(char text[100]) {
 		_eapi_cnsedit_win_init();
 		printf("\033[1;33m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_PURPLE_BOLD(char text[100]) {
+	static inline void eapi_purple_BOLD(char text[100]) {
 		_eapi_cnsedit_win_init();
 		printf("\033[1;35m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_CYAN_BOLD(char text[100]) {
+	static inline void eapi_cyan_BOLD(char text[100]) {
 		_eapi_cnsedit_win_init();
 		printf("\033[1;36m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_WHITE_BOLD(char text[100]) {
+	static inline void eapi_white_BOLD(char text[100]) {
 		_eapi_cnsedit_win_init();
 		printf("\033[1;37m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_BOLDSET(void) {
+	static inline void eapi_BOLDSET(void) {
 		_eapi_cnsedit_win_init();
 		printf("\033[1m");
 	}
 
 	// Formatting: Underline
-	static inline void CNSEDIT_ANSI_BLACK_ULINE(char text[100]) {
+	static inline void eapi_black_ULINE(char text[100]) {
 		_eapi_cnsedit_win_init();
 		printf("\033[4;30m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_RED_ULINE(char text[100]) {
+	static inline void eapi_red_ULINE(char text[100]) {
 		_eapi_cnsedit_win_init();
 		printf("\033[4;31m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_GREEN_ULINE(char text[100]) {
+	static inline void eapi_green_ULINE(char text[100]) {
 		_eapi_cnsedit_win_init();
 		printf("\033[4;32m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_BLUE_ULINE(char text[100]) {
+	static inline void eapi_blue_ULINE(char text[100]) {
 		_eapi_cnsedit_win_init();
 		printf("\033[4;34m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_YELLOW_ULINE(char text[100]) {
+	static inline void eapi_yellow_ULINE(char text[100]) {
 		_eapi_cnsedit_win_init();
 		printf("\033[4;33m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_PURPLE_ULINE(char text[100]) {
+	static inline void eapi_purple_ULINE(char text[100]) {
 		_eapi_cnsedit_win_init();
 		printf("\033[4;35m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_CYAN_ULINE(char text[100]) {
+	static inline void eapi_cyan_ULINE(char text[100]) {
 		_eapi_cnsedit_win_init();
 		printf("\033[4;36m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_WHITE_ULINE(char text[100]) {
+	static inline void eapi_white_ULINE(char text[100]) {
 		_eapi_cnsedit_win_init();
 		printf("\033[4;37m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_ULINESET(void) {
+	static inline void eapi_ULINESET(void) {
 		_eapi_cnsedit_win_init();
 		printf("\033[4m");
 	}
 
 	// Formatting: High Intensity
-	static inline void CNSEDIT_ANSI_BLACK_HINT(char text[100]) {
+	static inline void eapi_black_HINT(char text[100]) {
 		_eapi_cnsedit_win_init();
 		printf("\033[0;90m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_RED_HINT(char text[100]) {
+	static inline void eapi_red_HINT(char text[100]) {
 		_eapi_cnsedit_win_init();
 		printf("\033[0;91m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_GREEN_HINT(char text[100]) {
+	static inline void eapi_green_HINT(char text[100]) {
 		_eapi_cnsedit_win_init();
 		printf("\033[0;92m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_BLUE_HINT(char text[100]) {
+	static inline void eapi_blue_HINT(char text[100]) {
 		_eapi_cnsedit_win_init();
 		printf("\033[0;94m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_YELLOW_HINT(char text[100]) {
+	static inline void eapi_yellow_HINT(char text[100]) {
 		_eapi_cnsedit_win_init();
 		printf("\033[0;93m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_PURPLE_HINT(char text[100]) {
+	static inline void eapi_purple_HINT(char text[100]) {
 		_eapi_cnsedit_win_init();
 		printf("\033[0;95m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_CYAN_HINT(char text[100]) {
+	static inline void eapi_cyan_HINT(char text[100]) {
 		_eapi_cnsedit_win_init();
 		printf("\033[0;96m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_WHITE_HINT(char text[100]) {
+	static inline void eapi_white_HINT(char text[100]) {
 		_eapi_cnsedit_win_init();
 		printf("\033[0;97m%.99s", text);
 	}
 
 	// Formatting: Bold High Intensity
-	static inline void CNSEDIT_ANSI_BLACK_BHI(char text[100]) {
+	static inline void eapi_black_BHI(char text[100]) {
 		_eapi_cnsedit_win_init();
 		printf("\033[1;90m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_RED_BHI(char text[100]) {
+	static inline void eapi_red_BHI(char text[100]) {
 		_eapi_cnsedit_win_init();
 		printf("\033[1;91m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_GREEN_BHI(char text[100]) {
+	static inline void eapi_green_BHI(char text[100]) {
 		_eapi_cnsedit_win_init();
 		printf("\033[1;92m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_BLUE_BHI(char text[100]) {
+	static inline void eapi_blue_BHI(char text[100]) {
 		_eapi_cnsedit_win_init();
 		printf("\033[1;94m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_YELLOW_BHI(char text[100]) {
+	static inline void eapi_yellow_BHI(char text[100]) {
 		_eapi_cnsedit_win_init();
 		printf("\033[1;93m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_PURPLE_BHI(char text[100]) {
+	static inline void eapi_purple_BHI(char text[100]) {
 		_eapi_cnsedit_win_init();
 		printf("\033[1;95m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_CYAN_BHI(char text[100]) {
+	static inline void eapi_cyan_BHI(char text[100]) {
 		_eapi_cnsedit_win_init();
 		printf("\033[1;96m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_WHITE_BHI(char text[100]) {
+	static inline void eapi_white_BHI(char text[100]) {
 		_eapi_cnsedit_win_init();
 		printf("\033[1;97m%.99s", text);
 	}
 
 	// Formatting: Flashing
-	static inline void CNSEDIT_ANSI_FLASHING(char text[100]) {
+	static inline void eapi_FLASHING(char text[100]) {
 		_eapi_cnsedit_win_init();
 		printf("\033[5m%.99s", text);
 	}
@@ -336,69 +337,69 @@ extern "C" {
 		printf("%.499s", text);
 	}
 
-	/* CURSOR (SIMPLE) */
-	static inline void CNSEDIT_ANSI_CURSOR_LEFT(int sym) {
+	/* cursor (SIMPLE) */
+	static inline void eapi_cursor_LEFT(int sym) {
 		_eapi_cnsedit_win_init();
 		printf("\033[%dD", sym);
 	}
 	
-	static inline void CNSEDIT_ANSI_CURSOR_RIGHT(int sym) {
+	static inline void eapi_cursor_RIGHT(int sym) {
 		_eapi_cnsedit_win_init();
 		printf("\033[%dC", sym);
 	}
 
-	static inline void CNSEDIT_ANSI_CURSOR_UP(int column) {
+	static inline void eapi_cursor_UP(int column) {
 		_eapi_cnsedit_win_init();
 		printf("\033[%dA", column);
 	}
 
-	static inline void CNSEDIT_ANSI_CURSOR_DOWN(int column) {
+	static inline void eapi_cursor_DOWN(int column) {
 		_eapi_cnsedit_win_init();
 		printf("\033[%dB", column);
 	}
 
-	static inline void CNSEDIT_ANSI_CURSOR_HOME() {
+	static inline void eapi_cursor_HOME() {
 		_eapi_cnsedit_win_init();
 		printf("\033[H");
 	}
 
-	static inline void CNSEDIT_ANSI_CURSOR_CUSTOM(int column, int sym) {
+	static inline void eapi_cursor_CUSTOM(int column, int sym) {
 		_eapi_cnsedit_win_init();
 		printf("\033[%d;%dH", column, sym);
 	}
 
-	static inline void CNSEDIT_ANSI_CURSOR_SAVE() {
+	static inline void eapi_cursor_SAVE() {
 		_eapi_cnsedit_win_init();
 		printf("\033[s");
 	}
 
-	static inline void CNSEDIT_ANSI_CURSOR_PREVIOUS() {
+	static inline void eapi_cursor_PREVIOUS() {
 		_eapi_cnsedit_win_init();
 		printf("\033[u");
 	}
 
-	static inline void CNSEDIT_ANSI_CLEAR() {
+	static inline void eapi_CLEAR() {
 		_eapi_cnsedit_win_init();
 		printf("\x1b[2J");
 	}
 
-	static inline void CNEDIT_ANSI_LINECURSCLEAR() {
+	static inline void eapi_LINECURSCLEAR() {
 		_eapi_cnsedit_win_init();
 		printf("\x1b[K");
 	}
 
-	static inline void CNEDIT_ANSI_CURSOR_FLASHING_ON() {
+	static inline void eapi_cursor_FLASHING_ON() {
 		_eapi_cnsedit_win_init();
 		printf("\x1b[?12h");
 	}
 
-	static inline void CNEDIT_ANSI_CURSOR_FLASHING_OFF() {
+	static inline void eapi_cursor_FLASHING_OFF() {
 		_eapi_cnsedit_win_init();
 		printf("\x1b[?12l");
 	}
 
-	/* CURSOR (PROFESSIONAL) */
-	static inline void CNSEDIT_ANSI_CURSOR_LEFT_P(int sym, char hide_or_show) {
+	/* cursor (PROFESSIONAL) */
+	static inline void eapi_cursor_LEFT_P(int sym, char hide_or_show) {
 		_eapi_cnsedit_win_init();
 
 		printf("\033[%dD", sym);
@@ -407,7 +408,7 @@ extern "C" {
 		} else { /* Leaving the current visibility */ }
 	}
 	
-	static inline void CNSEDIT_ANSI_CURSOR_RIGHT_P(int sym, char hide_or_show) {
+	static inline void eapi_cursor_RIGHT_P(int sym, char hide_or_show) {
 		_eapi_cnsedit_win_init();
 
 		printf("\033[%dC", sym);
@@ -416,7 +417,7 @@ extern "C" {
 		} else {}
 	}
 
-	static inline void CNSEDIT_ANSI_CURSOR_UP_P(int column, char hide_or_show) {
+	static inline void eapi_cursor_UP_P(int column, char hide_or_show) {
 		_eapi_cnsedit_win_init();
 
 		printf("\033[%dA", column);
@@ -425,7 +426,7 @@ extern "C" {
 		} else {}
 	}
 
-	static inline void CNSEDIT_ANSI_CURSOR_DOWN_P(int column, char hide_or_show) {
+	static inline void eapi_cursor_DOWN_P(int column, char hide_or_show) {
 		_eapi_cnsedit_win_init();
 
 		printf("\033[%dB", column);
@@ -434,7 +435,7 @@ extern "C" {
 		} else {}
 	}
 
-	static inline void CNSEDIT_ANSI_CURSOR_HOME_P(char hide_or_show) {
+	static inline void eapi_cursor_HOME_P(char hide_or_show) {
 		_eapi_cnsedit_win_init();
 
 		printf("\033[H");
@@ -443,7 +444,7 @@ extern "C" {
 		} else {}
 	}
 
-	static inline void CNSEDIT_ANSI_CURSOR_CUSTOM_P(int column, int sym, char hide_or_show) {
+	static inline void eapi_cursor_CUSTOM_P(int column, int sym, char hide_or_show) {
 		_eapi_cnsedit_win_init();
 
 		printf("\033[%d;%dH", column, sym);
@@ -452,7 +453,7 @@ extern "C" {
 		} else {}
 	}
 
-	static inline void CNSEDIT_ANSI_CURSOR_SAVE_P(char hide_or_show) {
+	static inline void eapi_cursor_SAVE_P(char hide_or_show) {
 		_eapi_cnsedit_win_init();
 
 		printf("\033[s");
@@ -461,7 +462,7 @@ extern "C" {
 		} else {}
 	}
 
-	static inline void CNSEDIT_ANSI_CURSOR_PREVIOUS_P(char hide_or_show) {
+	static inline void eapi_cursor_PREVIOUS_P(char hide_or_show) {
 		_eapi_cnsedit_win_init();
 
 		printf("\033[u");
@@ -470,7 +471,7 @@ extern "C" {
 		} else {}
 	}
 
-	static inline void CNSEDIT_ANSI_CLEAR_P(char hide_or_show) {
+	static inline void eapi_CLEAR_P(char hide_or_show) {
 		_eapi_cnsedit_win_init();
 
 		printf("\x1b[2J");
@@ -479,7 +480,7 @@ extern "C" {
 		} else {}
 	}
 
-	static inline void CNEDIT_ANSI_LINECURSCLEAR_P(char hide_or_show) {
+	static inline void eapi_LINECURSCLEAR_P(char hide_or_show) {
 		_eapi_cnsedit_win_init();
 
 		printf("\x1b[K");
@@ -488,7 +489,7 @@ extern "C" {
 		} else {}
 	}
 
-	static inline void CNEDIT_ANSI_CURSOR_FLASHING_ON_P(char hide_or_show) {
+	static inline void eapi_cursor_FLASHING_ON_P(char hide_or_show) {
 		_eapi_cnsedit_win_init();
 
 		printf("\x1b[?12h");
@@ -497,7 +498,7 @@ extern "C" {
 		} else {}
 	}
 
-	static inline void CNEDIT_ANSI_CURSOR_FLASHING_OFF_P(char hide_or_show) {
+	static inline void eapi_cursor_FLASHING_OFF_P(char hide_or_show) {
 		_eapi_cnsedit_win_init();
 
 		printf("\x1b[?12l");
@@ -509,7 +510,7 @@ extern "C" {
 	/* ====== FS ======= */
 	/* FS - signal "Attention! Now we will work with the filesystem. */
 
-		static inline int FS_OBJ_EXISTS(const char *filename) {
+		static inline int object_exists(const char *filename) {
 			_eapi_cnsedit_win_init();
 			char path[500];
 			snprintf(path, sizeof(path), "%.499s", filename);
@@ -524,65 +525,65 @@ extern "C" {
 		}
 
 	/* ====== MATH ====== */
-	static inline int MATH_BASE_PLUS(int one, int two) {
+	static inline int eapi_math_add(int one, int two) {
 		int result = one + two;
 		return result;
 	}
 
-	static inline double MATH_BASE_PLUS_DOUBLE(double one, double two) {
+	static inline double eapi_math_add_double(double one, double two) {
 		double DOUBLE_MODULE_result = one + two;
 		return DOUBLE_MODULE_result;
 	}
 
-	static inline int MATH_BASE_MINUS(int one, int two) {
+	static inline int eapi_math_subtraction(int one, int two) {
 		int result = one - two;
 		return result;
 	}
 
-	static inline double MATH_BASE_MINUS_DOUBLE(double one, double two) {
+	static inline double eapi_math_subtraction_double(double one, double two) {
 		double DOUBLE_MODULE_result = one - two;
 		return DOUBLE_MODULE_result;
 	}
 
-	static inline int MATH_BASE_MULTIPLY(int one, int two) {
+	static inline int eapi_math_mpl(int one, int two) {
 		int result = one * two;
 		return result;
 	}
 
-	static inline double MATH_BASE_MULTIPLY_DOUBLE(double one, double two) {
+	static inline double eapi_math_mpl_double(double one, double two) {
 		double DOUBLE_MODULE_result = one * two;
 		return DOUBLE_MODULE_result;
 	}
 
-	static inline int MATH_BASE_DIVISION(int one, int two) {
+	static inline int eapi_math_division(int one, int two) {
 		int result = one / two;
 		return result;
 	}
 
-	static inline double MATH_BASE_DIVISION_DOUBLE(double one, double two) {
+	static inline double eapi_math_division_double(double one, double two) {
 		double DOUBLE_MODULE_result = one / two;
 		return DOUBLE_MODULE_result;
 	}
 
-	static inline int MATH_NS_SQRT(int num) {
+	static inline int eapi_math_sqrt(int num) {
 		int result = sqrt(num);
 		return result;
-	} // NS - Not a Standart
+	}
 
-	static inline double MATH_NS_SQRT_DOUBLE(double num) {
+	static inline double eapi_math_sqrt_double(double num) {
 		double DOUBLE_MODULE_result = sqrt(num);
 		return DOUBLE_MODULE_result;
 	}
 
-	static inline int MATH_NS_POWER(int num, int power) {
+	static inline int eapi_math_pow(int num, int power) {
 		int result = pow(num, power);
 		return result;
 	}
 
-	static inline double MATH_NS_POWER_DOUBLE(double num, double power) {
-		double result = pow(num, power);
-		return result;
-	}	
+	static inline double eapi_math_pow_double(double num, double power) {
+		double DOUBLE_MODULE_result = pow(num, power);
+		return DOUBLE_MODULE_result;
+	}
 
 #else /* NOTE: this defines all systems except Windows. It primarily uses Unix/Linux/MacOS syntax.
 	   * Unfortunately, there is no code for other systems. */
@@ -593,216 +594,216 @@ extern "C" {
 	/* CNSEDIT - signal "Attention! Now we will work with the console." */
 
 	// Normal text and background commands
-	static inline void CNSEDIT_ANSI_RESET() { // Reset all ANSI-styles
+	static inline void eapi_RESET() { // Reset all ANSI-styles
 		printf("\033[0m");
 	}
 
-	static inline void CNSEDIT_ANSI_BLACK(char text[100]) {
+	static inline void eapi_black(char text[100]) {
 		printf("\033[0;30m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_BLACKBG() {
+	static inline void eapi_blackBG() {
 		printf("\033[0;40m");	
 	}
 
-	static inline void CNSEDIT_ANSI_RED(char text[100]) {
+	static inline void eapi_red(char text[100]) {
 		printf("\033[0;31m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_REDBG() {
+	static inline void eapi_redBG() {
 		printf("\033[0;41m");
 	}
 
-	static inline void CNSEDIT_ANSI_GREEN(char text[100]) {
+	static inline void eapi_green(char text[100]) {
 		printf("\033[0;32m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_GREENBG() {
+	static inline void eapi_greenBG() {
 		printf("\033[0;42m");
 	}
 
-	static inline void CNSEDIT_ANSI_BLUE(char text[100]) {
+	static inline void eapi_blue(char text[100]) {
 		printf("\033[0;34m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_BLUEBG() {
+	static inline void eapi_blueBG() {
 		printf("\033[0;44m");
 	}
 
-	static inline void CNSEDIT_ANSI_YELLOW(char text[100]) {
+	static inline void eapi_yellow(char text[100]) {
 		printf("\033[0;33m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_YELLOWBG() {
+	static inline void eapi_yellowBG() {
 		printf("\033[0;43m");
 	}
 
-	static inline void CNSEDIT_ANSI_PURPLE(char text[100]) {
+	static inline void eapi_purple(char text[100]) {
 		printf("\e[0;35m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_PURPLEBG() {
+	static inline void eapi_purpleBG() {
 		printf("\e[0;45m");
 	}
 
-	static inline void CNSEDIT_ANSI_CYAN(char text[100]) {
+	static inline void eapi_cyan(char text[100]) {
 		printf("\e[0;36m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_CYANBG() {
+	static inline void eapi_cyanBG() {
 		printf("\e[0;46m");
 	}
 
-	static inline void CNSEDIT_ANSI_WHITE(char text[100]) {
+	static inline void eapi_white(char text[100]) {
 		printf("\e[0;37m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_WHITEBG() {
+	static inline void eapi_whiteBG() {
 		printf("\e[0;47m");
 	}
 
 	// Formatting: Bold
-	static inline void CNSEDIT_ANSI_BLACK_BOLD(char text[100]) {
+	static inline void eapi_black_BOLD(char text[100]) {
 		printf("\033[1;30m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_RED_BOLD(char text[100]) {
+	static inline void eapi_red_BOLD(char text[100]) {
 		printf("\033[1;31m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_GREEN_BOLD(char text[100]) {
+	static inline void eapi_green_BOLD(char text[100]) {
 		printf("\033[1;32m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_BLUE_BOLD(char text[100]) {
+	static inline void eapi_blue_BOLD(char text[100]) {
 		printf("\033[1;34m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_YELLOW_BOLD(char text[100]) {
+	static inline void eapi_yellow_BOLD(char text[100]) {
 		printf("\033[1;33m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_PURPLE_BOLD(char text[100]) {
+	static inline void eapi_purple_BOLD(char text[100]) {
 		printf("\033[1;35m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_CYAN_BOLD(char text[100]) {
+	static inline void eapi_cyan_BOLD(char text[100]) {
 		printf("\033[1;36m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_WHITE_BOLD(char text[100]) {
+	static inline void eapi_white_BOLD(char text[100]) {
 		printf("\033[1;37m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_BOLDSET() {
+	static inline void eapi_BOLDSET() {
 		printf("\033[1m");
 	}
 	
 	// Formatting: Underline
-	static inline void CNSEDIT_ANSI_BLACK_ULINE(char text[100]) {
+	static inline void eapi_black_ULINE(char text[100]) {
 		printf("\033[4;30m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_RED_ULINE(char text[100]) {
+	static inline void eapi_red_ULINE(char text[100]) {
 		printf("\033[4;31m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_GREEN_ULINE(char text[100]) {
+	static inline void eapi_green_ULINE(char text[100]) {
 		printf("\033[4;32m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_BLUE_ULINE(char text[100]) {
+	static inline void eapi_blue_ULINE(char text[100]) {
 		printf("\033[4;34m%.99s", text);
 	}
 	
-	static inline void CNSEDIT_ANSI_YELLOW_ULINE(char text[100]) {
+	static inline void eapi_yellow_ULINE(char text[100]) {
 		printf("\033[4;33m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_PURPLE_ULINE(char text[100]) {
+	static inline void eapi_purple_ULINE(char text[100]) {
 		printf("\033[4;35m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_CYAN_ULINE(char text[100]) {
+	static inline void eapi_cyan_ULINE(char text[100]) {
 		printf("\033[4;36m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_WHITE_ULINE(char text[100]) {
+	static inline void eapi_white_ULINE(char text[100]) {
 		printf("\033[4;37m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_ULINESET() {
+	static inline void eapi_ULINESET() {
 		printf("\033[4m");
 	}
 
 	// Formatting: High Intensity
-	static inline void CNSEDIT_ANSI_BLACK_HINT(char text[100]) {
+	static inline void eapi_black_HINT(char text[100]) {
 		printf("\033[0;90m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_RED_HINT(char text[100]) {
+	static inline void eapi_red_HINT(char text[100]) {
 		printf("\033[0;91m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_GREEN_HINT(char text[100]) {
+	static inline void eapi_green_HINT(char text[100]) {
 		printf("\033[0;92m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_BLUE_HINT(char text[100]) {
+	static inline void eapi_blue_HINT(char text[100]) {
 		printf("\033[0;94m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_YELLOW_HINT(char text[100]) {
+	static inline void eapi_yellow_HINT(char text[100]) {
 		printf("\033[0;93m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_PURPLE_HINT(char text[100]) {
+	static inline void eapi_purple_HINT(char text[100]) {
 		printf("\033[0;95m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_CYAN_HINT(char text[100]) {
+	static inline void eapi_cyan_HINT(char text[100]) {
 		printf("\033[0;96m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_WHITE_HINT(char text[100]) {
+	static inline void eapi_white_HINT(char text[100]) {
 		printf("\033[0;97m%.99s", text);
 	}
 
 	// Formatting: Bold High Intensity
-	static inline void CNSEDIT_ANSI_BLACK_BHI(char text[100]) {
+	static inline void eapi_black_BHI(char text[100]) {
 		printf("\033[1;90m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_RED_BHI(char text[100]) {
+	static inline void eapi_red_BHI(char text[100]) {
 		printf("\033[1;91m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_GREEN_BHI(char text[100]) {
+	static inline void eapi_green_BHI(char text[100]) {
 		printf("\033[1;92m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_BLUE_BHI(char text[100]) {
+	static inline void eapi_blue_BHI(char text[100]) {
 		printf("\033[1;94m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_YELLOW_BHI(char text[100]) {
+	static inline void eapi_yellow_BHI(char text[100]) {
 		printf("\033[1;93m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_PURPLE_BHI(char text[100]) {
+	static inline void eapi_purple_BHI(char text[100]) {
 		printf("\033[1;95m%.99s", text);
 	}
 
-	static inline void CNSEDIT_ANSI_CYAN_BHI(char text[100]) {
+	static inline void eapi_cyan_BHI(char text[100]) {
 		printf("\033[1;96m%.99s", text);
 	}
 	
-	static inline void CNSEDIT_ANSI_WHITE_BHI(char text[100]) {
+	static inline void eapi_white_BHI(char text[100]) {
 		printf("\033[1;97m%.99s", text);
 	}
 
 	// Formatting: Flashing
-	static inline void CNSEDIT_ANSI_FLASHING(char text[100]) {
+	static inline void eapi_FLASHING(char text[100]) {
 		printf("\x1b[5m%.99s", text);
 	}
 
@@ -811,134 +812,134 @@ extern "C" {
 		printf("%.499s", text);
 	}
 
-	/* CURSOR (SIMPLE) */
-	static inline void CNSEDIT_ANSI_CURSOR_LEFT(int sym) {
+	/* cursor (SIMPLE) */
+	static inline void eapi_cursor_LEFT(int sym) {
 		printf("\033[%dD", sym);
 	}
 	
-	static inline void CNSEDIT_ANSI_CURSOR_RIGHT(int sym) {
+	static inline void eapi_cursor_RIGHT(int sym) {
 		printf("\033[%dC", sym);
 	}
 
-	static inline void CNSEDIT_ANSI_CURSOR_UP(int column) {
+	static inline void eapi_cursor_UP(int column) {
 		printf("\033[%dA", column);
 	}
 
-	static inline void CNSEDIT_ANSI_CURSOR_DOWN(int column) {
+	static inline void eapi_cursor_DOWN(int column) {
 		printf("\033[%dB", column);
 	}
 
-	static inline void CNSEDIT_ANSI_CURSOR_HOME() {
+	static inline void eapi_cursor_HOME() {
 		printf("\033[H");
 	}
 
-	static inline void CNSEDIT_ANSI_CURSOR_CUSTOM(int column, int sym) {
+	static inline void eapi_cursor_CUSTOM(int column, int sym) {
 		printf("\033[%d;%dH", column, sym);
 	}
 
-	static inline void CNSEDIT_ANSI_CURSOR_SAVE() {
+	static inline void eapi_cursor_SAVE() {
 		printf("\033[s");
 	}
 
-	static inline void CNSEDIT_ANSI_CURSOR_PREVIOUS() {
+	static inline void eapi_cursor_PREVIOUS() {
 		printf("\033[u");
 	}
 
-	static inline void CNSEDIT_ANSI_CLEAR() {
+	static inline void eapi_CLEAR() {
 		printf("\x1b[2J");
 	}
 
-	static inline void CNEDIT_ANSI_LINECURSCLEAR() {
+	static inline void eapi_cursor_clearline() {
 		printf("\x1b[K");
 	}
 
-	static inline void CNEDIT_ANSI_CURSOR_FLASHING_ON() {
+	static inline void eapi_cursor_flashing() {
 		printf("\x1b[?12h");
 	}
 
-	static inline void CNEDIT_ANSI_CURSOR_FLASHING_OFF() {
+	static inline void eapi_cursor_flashing_off() {
 		printf("\x1b[?12l");
 	}
 
-	/* CURSOR (PROFESSIONAL) */
-	static inline void CNSEDIT_ANSI_CURSOR_LEFT_P(int sym, char hide_or_show) {
+	/* cursor (PROFESSIONAL) */
+	static inline void eapi_cursor_LEFT_P(int sym, char hide_or_show) {
 		printf("\033[%dD", sym);
 		if (hide_or_show == 'h') {
 			printf("\x1b[?25l");
 		} else { /* Leaving the current visibility */ }
 	}
 	
-	static inline void CNSEDIT_ANSI_CURSOR_RIGHT_P(int sym, char hide_or_show) {
+	static inline void eapi_cursor_RIGHT_P(int sym, char hide_or_show) {
 		printf("\033[%dC", sym);
 		if (hide_or_show == 'h') {
 			printf("\x1b[?25l");
 		} else {}
 	}
 
-	static inline void CNSEDIT_ANSI_CURSOR_UP_P(int column, char hide_or_show) {
+	static inline void eapi_cursor_UP_P(int column, char hide_or_show) {
 		printf("\033[%dA", column);
 		if (hide_or_show == 'h') {
 			printf("\x1b[?25l");
 		} else {}
 	}
 
-	static inline void CNSEDIT_ANSI_CURSOR_DOWN_P(int column, char hide_or_show) {
+	static inline void eapi_cursor_DOWN_P(int column, char hide_or_show) {
 		printf("\033[%dB", column);
 		if (hide_or_show == 'h') {
 			printf("\x1b[?25l");
 		} else {}
 	}
 
-	static inline void CNSEDIT_ANSI_CURSOR_HOME_P(char hide_or_show) {
+	static inline void eapi_cursor_HOME_P(char hide_or_show) {
 		printf("\033[H");
 		if (hide_or_show == 'h') {
 			printf("\x1b[?25l");
 		} else {}
 	}
 
-	static inline void CNSEDIT_ANSI_CURSOR_CUSTOM_P(int column, int sym, char hide_or_show) {
+	static inline void eapi_cursor_CUSTOM_P(int column, int sym, char hide_or_show) {
 		printf("\033[%d;%dH", column, sym);
 		if (hide_or_show == 'h') {
 			printf("\x1b[?25l");
 		} else {}
 	}
 
-	static inline void CNSEDIT_ANSI_CURSOR_SAVE_P(char hide_or_show) {
+	static inline void eapi_cursor_SAVE_P(char hide_or_show) {
 		printf("\033[s");
 		if (hide_or_show == 'h') {
 			printf("\x1b[?25l");
 		} else {}
 	}
 
-	static inline void CNSEDIT_ANSI_CURSOR_PREVIOUS_P(char hide_or_show) {
+	static inline void eapi_cursor_PREVIOUS_P(char hide_or_show) {
 		printf("\033[u");
 		if (hide_or_show == 'h') {
 			printf("\x1b[?25l");
 		} else {}
 	}
 
-	static inline void CNSEDIT_ANSI_CLEAR_P(char hide_or_show) {
+	static inline void eapi_CLEAR_P(char hide_or_show) {
 		printf("\x1b[2J");
 		if (hide_or_show == 'h') {
 			printf("\x1b[?25l");
 		} else {}
 	}
 
-	static inline void CNEDIT_ANSI_LINECURSCLEAR_P(char hide_or_show) {
+	static inline void eapi_LINECURSCLEAR_P(char hide_or_show) {
 		printf("\x1b[K");
 		if (hide_or_show == 'h') {
 			printf("\x1b[?25l");
 		} else {}
 	}
 
-	static inline void CNEDIT_ANSI_CURSOR_FLASHING_ON_P(char hide_or_show) {
+	static inline void eapi_cursor_FLASHING_ON_P(char hide_or_show) {
 		printf("\x1b[?12h");
 		if (hide_or_show == 'h') {
 			printf("\x1b[?25l");
 		} else {}
 	}
 
-	static inline void CNEDIT_ANSI_CURSOR_FLASHING_OFF_P(char hide_or_show) {
+	static inline void eapi_cursor_FLASHING_OFF_P(char hide_or_show) {
 		printf("\x1b[?12l");
 		if (hide_or_show == 'h') {
 			printf("\x1b[?25l");
@@ -947,7 +948,7 @@ extern "C" {
 
 	/* ====== FS ======= */
 	/* FS - signal "Attention! Now we will work with the filesystem. */
-	static inline int FS_OBJ_EXISTS(const char *filename) {
+	static inline int object_exists(const char *filename) {
 		char path[500];
 		
 		snprintf(path, sizeof(path), "%.499s", filename); /* sizeof takes into account the array size,
@@ -957,62 +958,62 @@ extern "C" {
 	}
 
 	/* ====== MATH ====== */
-	static inline int MATH_BASE_PLUS(int one, int two) {
+	static inline int eapi_math_add(int one, int two) {
 		int result = one + two;
 		return result;
 	}
 
-	static inline double MATH_BASE_PLUS_DOUBLE(double one, double two) {
+	static inline double eapi_math_add_double(double one, double two) {
 		double DOUBLE_MODULE_result = one + two;
 		return DOUBLE_MODULE_result;
 	}
 
-	static inline int MATH_BASE_MINUS(int one, int two) {
+	static inline int eapi_math_subtraction(int one, int two) {
 		int result = one - two;
 		return result;
 	}
 
-	static inline double MATH_BASE_MINUS_DOUBLE(double one, double two) {
+	static inline double eapi_math_subtraction_double(double one, double two) {
 		double DOUBLE_MODULE_result = one - two;
 		return DOUBLE_MODULE_result;
 	}
 
-	static inline int MATH_BASE_MULTIPLY(int one, int two) {
+	static inline int eapi_math_mpl(int one, int two) {
 		int result = one * two;
 		return result;
 	}
 
-	static inline double MATH_BASE_MULTIPLY_DOUBLE(double one, double two) {
+	static inline double eapi_math_mpl_double(double one, double two) {
 		double DOUBLE_MODULE_result = one * two;
 		return DOUBLE_MODULE_result;
 	}
 
-	static inline int MATH_BASE_DIVISION(int one, int two) {
+	static inline int eapi_math_division(int one, int two) {
 		int result = one / two;
 		return result;
 	}
 
-	static inline double MATH_BASE_DIVISION_DOUBLE(double one, double two) {
+	static inline double eapi_math_division_double(double one, double two) {
 		double DOUBLE_MODULE_result = one / two;
 		return DOUBLE_MODULE_result;
 	}
 
-	static inline int MATH_NS_SQRT(int num) {
+	static inline int eapi_math_sqrt(int num) {
 		int result = sqrt(num);
 		return result;
 	} // NS - Not a Standart
 
-	static inline double MATH_NS_SQRT_DOUBLE(double num) {
+	static inline double eapi_math_sqrt_double(double num) {
 		double DOUBLE_MODULE_result = sqrt(num);
 		return DOUBLE_MODULE_result;
 	}
 
-	static inline int MATH_NS_POWER(int num, int power) {
+	static inline int eapi_math_pow(int num, int power) {
 		int result = pow(num, power);
 		return result;
 	}
 
-	static inline double MATH_NS_POWER_DOUBLE(double num, double power) {
+	static inline double eapi_math_pow_double(double num, double power) {
 		double DOUBLE_MODULE_result = pow(num, power);
 		return DOUBLE_MODULE_result;
 	}
