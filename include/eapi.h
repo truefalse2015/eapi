@@ -22,7 +22,7 @@
  * ====== THE EFFORT API PROJECT ======
 */
 
-/* Effort API v1.0 (Build 29052026) */
+/* Effort API 1 (1.0) Build 29052026 */
 
 #ifndef EAPI_H
 #define EAPI_H
@@ -60,6 +60,16 @@ extern "C" {
 			SetConsoleMode(hOut, dwMode);
 		}
 		_eapi_win_ansi_enabled = 1;
+	}
+
+	static inline void EapiInitialization() {
+		printf("Check your system...\n");
+		#ifdef _WIN32
+			printf("Windows");
+		#else
+			printf("Linux/MacOS or other");
+		#endif
+		printf("[EffortAPI] Effort API 1 (1.0) Build 29052026");
 	}
 
 	/* ====== CNSEDIT ====== */
@@ -525,6 +535,42 @@ extern "C" {
 		}
 
 	/* ====== MATH ====== */
+	static inline void eapi_systemDelay_ms(int delay) {
+		Sleep(delay * 1); // 1 ms = 1ms
+	}
+
+	static inline void eapi_systemDelay_sec(int delay) {
+		usleep(delay * 1000); // 1 sec = 1000 ms
+	}
+
+	// Currently, in the eAPI version, 1 microsecond Windows sections will not be available.
+
+	static inline void eapi_systemDelay_min(int delay) {
+		usleep(delay * 60000); // 1 min = 60000 ms
+	}
+	
+	static inline void eapi_srandInitialization() {
+		srand(time(nullptr));
+	}
+
+	static inline int eapi_rand(int max) {
+		int result;
+		result = rand() % max;
+		return result;
+	}
+
+	static inline double eapi_rand_double(double max) {
+		double result;
+		result = rand() % max;
+		return result;
+	}
+
+	static inline float eapi_rand_float(float max) {
+		float result;
+		result = rand() % max;
+		return result;
+	}
+
 	static inline int eapi_math_add(int one, int two) {
 		int result = one + two;
 		return result;
@@ -589,6 +635,16 @@ extern "C" {
 	   * Unfortunately, there is no code for other systems. */
 
 	#include <unistd.h> // For Linux and MacOS (if MacOS - "from box")
+
+	static inline void EapiInitialization() {
+		printf("Check your system...\n");
+		#ifdef _WIN32
+			printf("Windows");
+		#else
+			printf("Linux/MacOS or other");
+		#endif
+		printf("[EffortAPI] Effort API 1 (1.0) Build 29052026");
+	}
 	
 	/* ====== CNSEDIT ======= */
 	/* CNSEDIT - signal "Attention! Now we will work with the console." */
@@ -957,7 +1013,91 @@ extern "C" {
 		return (access(path, F_OK) == 0) ? 1 : 0;
 	}
 
+	#if defined(_WIN32) || defined(_WIN64)
+		#include <direct.h>
+		#define mkdir_os(path) _mkdir(path)
+	#else
+		#include <sys/stat.h> // Для mkdir на Linux/macOS
+		#include <sys/types.h>
+		#define mkdir_os(path) mkdir(path, 0777)
+	#endif
+	typedef enum {
+		FILE,
+		DIR
+	} EapiType;
+	static inline int eapi_remove(const char *objname, EapiType type) {
+		char path[500];
+		if (objname == NULL) {
+        	return 0; 
+    	}
+		int written = snprintf(path, sizeof(path), "%s", objname);
+		if (written < 0 || (size_t)written >= sizeof(path)) {
+			return 0;
+		}
+
+		if (type == EAPI_FILE) {
+			FILE *fptr = fopen(path, "w");
+			if (fptr == NULL) {
+				return 0; 
+			}
+			fclose(fptr); 
+			return 1;     
+		} 
+		else if (type == EAPI_DIR) {
+			if (mkdir_os(path) != 0) {
+				return 0; 
+			}
+			return 1;     
+		}
+	}
+
+	static inline int eapi_newObject(const char *objname) {
+		char path[500];
+		if (objname == NULL) { return 0; }
+		int written = snprintf(path, sizeof(path), "%s", objname)
+		if (written < 0 || (size_t)wriitten >= sizeof(path)) { return 0; }
+		return 
+	}
+
 	/* ====== MATH ====== */
+	static inline void eapi_systemDelay_ms(int delay) {
+		usleep(delay * 1000); // 1 ms = 1000 us
+	}
+
+	static inline void eapi_systemDelay_sec(int delay) {
+		usleep(delay * 1000000); // 1 sec = 1000000 us
+	}
+
+	static inline void eapi_systemDelay_us(int delay) {
+		usleep(delay * 1); // 1 us = 1 us
+	}
+
+	static inline void eapi_systemDelay_min(int delay) {
+		usleep(delay * 60000000); // 1 min = 60000000 us
+	}
+	
+	static inline void eapi_srandInitialization() {
+		srand(time(nullptr));
+	}
+
+	sstatic inline int eapi_rand(int max) {
+		int result;
+		result = rand() % max;
+		return result;
+	}
+
+	static inline double eapi_rand_double(double max) {
+		double result;
+		result = rand() % max;
+		return result;
+	}
+
+	static inline float eapi_rand_float(float max) {
+		float result;
+		result = rand() % max;
+		return result;
+	}
+
 	static inline int eapi_math_add(int one, int two) {
 		int result = one + two;
 		return result;
