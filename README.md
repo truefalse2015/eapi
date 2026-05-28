@@ -1,4 +1,4 @@
-<img src="assets/logo.png" alt="Oops! Unable to access for file 'assets/logo.png'" width="100">
+<img src="assets/logo_now.png" alt="Oops! Unable to access for file 'assets/logo.png'" width="100">
 
 [YEEEEAH!!!!] NEW VERSION EFFORT API BETA BUILD 250526 (BUILD 25052026)
 
