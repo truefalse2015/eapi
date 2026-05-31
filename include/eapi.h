@@ -550,7 +550,7 @@ extern "C" {
     }
 	
 	static inline void eapi_srandInitialization() {
-		srand(time(nullptr));
+		srand(time(NULL));
 	}
 
 	static inline int eapi_rand(int max) {
@@ -1168,7 +1168,7 @@ extern "C" {
 	}
 	
 	static inline void eapi_srandInitialization() {
-		srand(time(nullptr));
+		srand(time(NULL));
 	}
 
 	static inline int eapi_rand(int max) {
