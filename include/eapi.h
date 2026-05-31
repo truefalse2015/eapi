@@ -22,18 +22,22 @@
  * ====== THE EFFORT API PROJECT ======
 */
 
-/* Effort API 1 (1.0) Build 29052026 */
+/* Effort API 1 (1.0) Build 01062026 */
 
 #ifndef EAPI_H
 #define EAPI_H
 
 #include <stdio.h>
 #include <string.h>
-#include <math.h> // New! Math in library
+#include <time.h>
+#include <errno.h>
+#include <math.h>
+#include <stdlib.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
 #ifdef _WIN32
 	#include <windows.h>
 
@@ -69,7 +73,7 @@ extern "C" {
 		#else
 			printf("Linux/MacOS or other");
 		#endif
-		printf("[EffortAPI] Effort API 1 (1.0) Build 29052026");
+		printf("[EffortAPI] Effort API 1 (1.0) Build 01062026");
 	}
 
 	/* ====== CNSEDIT ====== */
@@ -81,7 +85,7 @@ extern "C" {
 		printf("\033[0m");
 	}
 
-	static inline void eapi_black(char text[100]) {
+	static inline void eapi_black(const char* text) {
 		_eapi_cnsedit_win_init();
 		printf("\033[0;30m%.99s", text);
 	}
@@ -91,7 +95,7 @@ extern "C" {
 		printf("\033[0;40m");
 	}
 
-	static inline void eapi_red(char text[100]) {
+	static inline void eapi_red(const char* text) {
 		_eapi_cnsedit_win_init();
 		printf("\033[0;31m%.99s", text);
 	}
@@ -101,7 +105,7 @@ extern "C" {
 		printf("\033[0;41m");
 	}
 
-	static inline void eapi_green(char text[100]) {
+	static inline void eapi_green(const char* text) {
 		_eapi_cnsedit_win_init();
 		printf("\033[0;32m%.99s", text);
 	}
@@ -111,7 +115,7 @@ extern "C" {
 		printf("\033[0;42m");
 	}
 
-	static inline void eapi_blue(char text[100]) {
+	static inline void eapi_blue(const char* text) {
 		_eapi_cnsedit_win_init();
 		printf("\033[0;34m%.99s", text);
 	}
@@ -121,7 +125,7 @@ extern "C" {
 		printf("\033[0;44m");
 	}
 
-	static inline void eapi_yellow(char text[100]) {
+	static inline void eapi_yellow(const char* text) {
 		_eapi_cnsedit_win_init();
 		printf("\033[0;33m%.99s", text);
 	}
@@ -131,7 +135,7 @@ extern "C" {
 		printf("\033[0;43m");
 	}
 
-	static inline void eapi_purple(char text[100]) {
+	static inline void eapi_purple(const char* text) {
 		_eapi_cnsedit_win_init();
 		printf("\033[0;35m%.99s", text);
 	}
@@ -141,7 +145,7 @@ extern "C" {
 		printf("\033[0;45m");
 	}
 
-	static inline void eapi_cyan(char text[100]) {
+	static inline void eapi_cyan(const char* text) {
 		_eapi_cnsedit_win_init();
 		printf("\033[0;36m%.99s", text);
 	}
@@ -151,7 +155,7 @@ extern "C" {
 		printf("\033[0;46m");
 	}
 
-	static inline void eapi_white(char text[100]) {
+	static inline void eapi_white(const char* text) {
 		_eapi_cnsedit_win_init();
 		printf("\033[0;37m%.99s", text);
 	}
@@ -162,42 +166,42 @@ extern "C" {
 	}
 
 	// Formatting: Bold
-	static inline void eapi_black_BOLD(char text[100]) {
+	static inline void eapi_black_BOLD(const char* text) {
 		_eapi_cnsedit_win_init();
 		printf("\033[1;30m%.99s", text);
 	}
 
-	static inline void eapi_red_BOLD(char text[100]) {
+	static inline void eapi_red_BOLD(const char* text) {
 		_eapi_cnsedit_win_init();
 		printf("\033[1;31m%.99s", text);
 	}
 
-	static inline void eapi_green_BOLD(char text[100]) {
+	static inline void eapi_green_BOLD(const char* text) {
 		_eapi_cnsedit_win_init();
 		printf("\033[1;32m%.99s", text);
 	}
 
-	static inline void eapi_blue_BOLD(char text[100]) {
+	static inline void eapi_blue_BOLD(const char* text) {
 		_eapi_cnsedit_win_init();
 		printf("\033[1;34m%.99s", text);
 	}
 
-	static inline void eapi_yellow_BOLD(char text[100]) {
+	static inline void eapi_yellow_BOLD(const char* text) {
 		_eapi_cnsedit_win_init();
 		printf("\033[1;33m%.99s", text);
 	}
 
-	static inline void eapi_purple_BOLD(char text[100]) {
+	static inline void eapi_purple_BOLD(const char* text) {
 		_eapi_cnsedit_win_init();
 		printf("\033[1;35m%.99s", text);
 	}
 
-	static inline void eapi_cyan_BOLD(char text[100]) {
+	static inline void eapi_cyan_BOLD(const char* text) {
 		_eapi_cnsedit_win_init();
 		printf("\033[1;36m%.99s", text);
 	}
 
-	static inline void eapi_white_BOLD(char text[100]) {
+	static inline void eapi_white_BOLD(const char* text) {
 		_eapi_cnsedit_win_init();
 		printf("\033[1;37m%.99s", text);
 	}
@@ -208,42 +212,42 @@ extern "C" {
 	}
 
 	// Formatting: Underline
-	static inline void eapi_black_ULINE(char text[100]) {
+	static inline void eapi_black_ULINE(const char* text) {
 		_eapi_cnsedit_win_init();
 		printf("\033[4;30m%.99s", text);
 	}
 
-	static inline void eapi_red_ULINE(char text[100]) {
+	static inline void eapi_red_ULINE(const char* text) {
 		_eapi_cnsedit_win_init();
 		printf("\033[4;31m%.99s", text);
 	}
 
-	static inline void eapi_green_ULINE(char text[100]) {
+	static inline void eapi_green_ULINE(const char* text) {
 		_eapi_cnsedit_win_init();
 		printf("\033[4;32m%.99s", text);
 	}
 
-	static inline void eapi_blue_ULINE(char text[100]) {
+	static inline void eapi_blue_ULINE(const char* text) {
 		_eapi_cnsedit_win_init();
 		printf("\033[4;34m%.99s", text);
 	}
 
-	static inline void eapi_yellow_ULINE(char text[100]) {
+	static inline void eapi_yellow_ULINE(const char* text) {
 		_eapi_cnsedit_win_init();
 		printf("\033[4;33m%.99s", text);
 	}
 
-	static inline void eapi_purple_ULINE(char text[100]) {
+	static inline void eapi_purple_ULINE(const char* text) {
 		_eapi_cnsedit_win_init();
 		printf("\033[4;35m%.99s", text);
 	}
 
-	static inline void eapi_cyan_ULINE(char text[100]) {
+	static inline void eapi_cyan_ULINE(const char* text) {
 		_eapi_cnsedit_win_init();
 		printf("\033[4;36m%.99s", text);
 	}
 
-	static inline void eapi_white_ULINE(char text[100]) {
+	static inline void eapi_white_ULINE(const char* text) {
 		_eapi_cnsedit_win_init();
 		printf("\033[4;37m%.99s", text);
 	}
@@ -254,89 +258,89 @@ extern "C" {
 	}
 
 	// Formatting: High Intensity
-	static inline void eapi_black_HINT(char text[100]) {
+	static inline void eapi_black_HINT(const char* text) {
 		_eapi_cnsedit_win_init();
 		printf("\033[0;90m%.99s", text);
 	}
 
-	static inline void eapi_red_HINT(char text[100]) {
+	static inline void eapi_red_HINT(const char* text) {
 		_eapi_cnsedit_win_init();
 		printf("\033[0;91m%.99s", text);
 	}
 
-	static inline void eapi_green_HINT(char text[100]) {
+	static inline void eapi_green_HINT(const char* text) {
 		_eapi_cnsedit_win_init();
 		printf("\033[0;92m%.99s", text);
 	}
 
-	static inline void eapi_blue_HINT(char text[100]) {
+	static inline void eapi_blue_HINT(const char* text) {
 		_eapi_cnsedit_win_init();
 		printf("\033[0;94m%.99s", text);
 	}
 
-	static inline void eapi_yellow_HINT(char text[100]) {
+	static inline void eapi_yellow_HINT(const char* text) {
 		_eapi_cnsedit_win_init();
 		printf("\033[0;93m%.99s", text);
 	}
 
-	static inline void eapi_purple_HINT(char text[100]) {
+	static inline void eapi_purple_HINT(const char* text) {
 		_eapi_cnsedit_win_init();
 		printf("\033[0;95m%.99s", text);
 	}
 
-	static inline void eapi_cyan_HINT(char text[100]) {
+	static inline void eapi_cyan_HINT(const char* text) {
 		_eapi_cnsedit_win_init();
 		printf("\033[0;96m%.99s", text);
 	}
 
-	static inline void eapi_white_HINT(char text[100]) {
+	static inline void eapi_white_HINT(const char* text) {
 		_eapi_cnsedit_win_init();
 		printf("\033[0;97m%.99s", text);
 	}
 
 	// Formatting: Bold High Intensity
-	static inline void eapi_black_BHI(char text[100]) {
+	static inline void eapi_black_BHI(const char* text) {
 		_eapi_cnsedit_win_init();
 		printf("\033[1;90m%.99s", text);
 	}
 
-	static inline void eapi_red_BHI(char text[100]) {
+	static inline void eapi_red_BHI(const char* text) {
 		_eapi_cnsedit_win_init();
 		printf("\033[1;91m%.99s", text);
 	}
 
-	static inline void eapi_green_BHI(char text[100]) {
+	static inline void eapi_green_BHI(const char* text) {
 		_eapi_cnsedit_win_init();
 		printf("\033[1;92m%.99s", text);
 	}
 
-	static inline void eapi_blue_BHI(char text[100]) {
+	static inline void eapi_blue_BHI(const char* text) {
 		_eapi_cnsedit_win_init();
 		printf("\033[1;94m%.99s", text);
 	}
 
-	static inline void eapi_yellow_BHI(char text[100]) {
+	static inline void eapi_yellow_BHI(const char* text) {
 		_eapi_cnsedit_win_init();
 		printf("\033[1;93m%.99s", text);
 	}
 
-	static inline void eapi_purple_BHI(char text[100]) {
+	static inline void eapi_purple_BHI(const char* text) {
 		_eapi_cnsedit_win_init();
 		printf("\033[1;95m%.99s", text);
 	}
 
-	static inline void eapi_cyan_BHI(char text[100]) {
+	static inline void eapi_cyan_BHI(const char* text) {
 		_eapi_cnsedit_win_init();
 		printf("\033[1;96m%.99s", text);
 	}
 
-	static inline void eapi_white_BHI(char text[100]) {
+	static inline void eapi_white_BHI(const char* text) {
 		_eapi_cnsedit_win_init();
 		printf("\033[1;97m%.99s", text);
 	}
 
 	// Formatting: Flashing
-	static inline void eapi_FLASHING(char text[100]) {
+	static inline void eapi_FLASHING(const char* text) {
 		_eapi_cnsedit_win_init();
 		printf("\033[5m%.99s", text);
 	}
@@ -536,18 +540,14 @@ extern "C" {
 
 	/* ====== MATH ====== */
 	static inline void eapi_systemDelay_ms(int delay) {
-		Sleep(delay * 1); // 1 ms = 1ms
-	}
-
-	static inline void eapi_systemDelay_sec(int delay) {
-		usleep(delay * 1000); // 1 sec = 1000 ms
-	}
-
-	// Currently, in the eAPI version, 1 microsecond Windows sections will not be available.
-
-	static inline void eapi_systemDelay_min(int delay) {
-		usleep(delay * 60000); // 1 min = 60000 ms
-	}
+        Sleep(delay * 1);
+    }
+    static inline void eapi_systemDelay_sec(int delay) {
+        Sleep(delay * 1000);
+    }
+    static inline void eapi_systemDelay_min(int delay) {
+        Sleep(delay * 60000);
+    }
 	
 	static inline void eapi_srandInitialization() {
 		srand(time(nullptr));
@@ -555,18 +555,6 @@ extern "C" {
 
 	static inline int eapi_rand(int max) {
 		int result;
-		result = rand() % max;
-		return result;
-	}
-
-	static inline double eapi_rand_double(double max) {
-		double result;
-		result = rand() % max;
-		return result;
-	}
-
-	static inline float eapi_rand_float(float max) {
-		float result;
 		result = rand() % max;
 		return result;
 	}
@@ -602,19 +590,46 @@ extern "C" {
 	}
 
 	static inline int eapi_math_division(int one, int two) {
+		if (two == 0) {
+			printf("[eAPI] Error: division by zero!");
+			return 0;
+		}
 		int result = one / two;
 		return result;
 	}
+	static inline int eapi_math_division_professional(int one, int two, int *error) {
+		if (two == 0) {
+			if (error) *error = 1;
+			fprintf(stderr, "[eAPI] Error: division by zero!\n");
+			return 0;
+		}
+		if (error) *error = 0;
+		return one / two;
+	}
 
 	static inline double eapi_math_division_double(double one, double two) {
+		if (two == 0.0) {
+			printf("[eAPI] Error: division by zero!");
+			return 0.0;
+		}
 		double DOUBLE_MODULE_result = one / two;
 		return DOUBLE_MODULE_result;
+	}
+
+	static inline double eapi_math_division_double_professional(double one, double two, int *error) {
+		if (two == 0.0) {
+			if (error) *error = 1;
+			fprintf(stderr, "[eAPI] Error: division by zero!\n");
+			return 0.0;
+		}
+		if (error) *error = 0;
+		return one / two;
 	}
 
 	static inline int eapi_math_sqrt(int num) {
 		int result = sqrt(num);
 		return result;
-	}
+	} // NS - Not a Standart
 
 	static inline double eapi_math_sqrt_double(double num) {
 		double DOUBLE_MODULE_result = sqrt(num);
@@ -630,6 +645,62 @@ extern "C" {
 		double DOUBLE_MODULE_result = pow(num, power);
 		return DOUBLE_MODULE_result;
 	}
+	
+	/* ====== OTHER ====== */
+	
+	/**
+		 * Swaps the values of two integers.
+		 * @param a Pointer to the first integer
+		 * @param b Pointer to the second integer
+		 *
+		 * If either pointer is NULL or both pointers are the same,
+		 * the function does nothing.
+	*/
+	static inline void eapi_swap(int *a, int *b) {
+		// Protection against NULL values or identical numbers
+		if (a == NULL || b == NULL || a == b) {
+			return;
+		}
+		int swapped_value = *a;
+		*a = *b;
+		*b = swapped_value;
+	}
+
+	/**
+		 * Swaps the values of two integers.
+		 * @param a Pointer to the first integer
+		 * @param b Pointer to the second integer
+		 *
+		 * If either pointer is NULL or both pointers are the same,
+		 * the function does nothing.
+	*/
+	static inline void eapi_swap_double(double *a, double *b) {
+		// Protection against NULL values or identical numbers
+		if (a == NULL || b == NULL || a == b) {
+			return;
+		}
+		double swapped_value = *a;
+		*a = *b;
+		*b = swapped_value;
+	}
+
+	/**
+		 * Swaps the values of two integers.
+		 * @param a Pointer to the first integer
+		 * @param b Pointer to the second integer
+		 *
+		 * If either pointer is NULL or both pointers are the same,
+		 * the function does nothing.
+	*/
+	static inline void eapi_swap_float(float *a, float *b) {
+		// Protection against NULL values or identical numbers
+		if (a == NULL || b == NULL || a == b) {
+			return;
+		}
+		float swapped_value = *a;
+		*a = *b;
+		*b = swapped_value;
+	}
 
 #else /* NOTE: this defines all systems except Windows. It primarily uses Unix/Linux/MacOS syntax.
 	   * Unfortunately, there is no code for other systems. */
@@ -643,7 +714,7 @@ extern "C" {
 		#else
 			printf("Linux/MacOS or other");
 		#endif
-		printf("[EffortAPI] Effort API 1 (1.0) Build 29052026");
+		printf("[EffortAPI] Effort API 1 (1.0) Build 01062026");
 	}
 	
 	/* ====== CNSEDIT ======= */
@@ -654,7 +725,7 @@ extern "C" {
 		printf("\033[0m");
 	}
 
-	static inline void eapi_black(char text[100]) {
+	static inline void eapi_black(const char* text) {
 		printf("\033[0;30m%.99s", text);
 	}
 
@@ -662,7 +733,7 @@ extern "C" {
 		printf("\033[0;40m");	
 	}
 
-	static inline void eapi_red(char text[100]) {
+	static inline void eapi_red(const char* text) {
 		printf("\033[0;31m%.99s", text);
 	}
 
@@ -670,7 +741,7 @@ extern "C" {
 		printf("\033[0;41m");
 	}
 
-	static inline void eapi_green(char text[100]) {
+	static inline void eapi_green(const char* text) {
 		printf("\033[0;32m%.99s", text);
 	}
 
@@ -678,7 +749,7 @@ extern "C" {
 		printf("\033[0;42m");
 	}
 
-	static inline void eapi_blue(char text[100]) {
+	static inline void eapi_blue(const char* text) {
 		printf("\033[0;34m%.99s", text);
 	}
 
@@ -686,7 +757,7 @@ extern "C" {
 		printf("\033[0;44m");
 	}
 
-	static inline void eapi_yellow(char text[100]) {
+	static inline void eapi_yellow(const char* text) {
 		printf("\033[0;33m%.99s", text);
 	}
 
@@ -694,7 +765,7 @@ extern "C" {
 		printf("\033[0;43m");
 	}
 
-	static inline void eapi_purple(char text[100]) {
+	static inline void eapi_purple(const char* text) {
 		printf("\e[0;35m%.99s", text);
 	}
 
@@ -702,7 +773,7 @@ extern "C" {
 		printf("\e[0;45m");
 	}
 
-	static inline void eapi_cyan(char text[100]) {
+	static inline void eapi_cyan(const char* text) {
 		printf("\e[0;36m%.99s", text);
 	}
 
@@ -710,7 +781,7 @@ extern "C" {
 		printf("\e[0;46m");
 	}
 
-	static inline void eapi_white(char text[100]) {
+	static inline void eapi_white(const char* text) {
 		printf("\e[0;37m%.99s", text);
 	}
 
@@ -719,35 +790,35 @@ extern "C" {
 	}
 
 	// Formatting: Bold
-	static inline void eapi_black_BOLD(char text[100]) {
+	static inline void eapi_black_BOLD(const char* text) {
 		printf("\033[1;30m%.99s", text);
 	}
 
-	static inline void eapi_red_BOLD(char text[100]) {
+	static inline void eapi_red_BOLD(const char* text) {
 		printf("\033[1;31m%.99s", text);
 	}
 
-	static inline void eapi_green_BOLD(char text[100]) {
+	static inline void eapi_green_BOLD(const char* text) {
 		printf("\033[1;32m%.99s", text);
 	}
 
-	static inline void eapi_blue_BOLD(char text[100]) {
+	static inline void eapi_blue_BOLD(const char* text) {
 		printf("\033[1;34m%.99s", text);
 	}
 
-	static inline void eapi_yellow_BOLD(char text[100]) {
+	static inline void eapi_yellow_BOLD(const char* text) {
 		printf("\033[1;33m%.99s", text);
 	}
 
-	static inline void eapi_purple_BOLD(char text[100]) {
+	static inline void eapi_purple_BOLD(const char* text) {
 		printf("\033[1;35m%.99s", text);
 	}
 
-	static inline void eapi_cyan_BOLD(char text[100]) {
+	static inline void eapi_cyan_BOLD(const char* text) {
 		printf("\033[1;36m%.99s", text);
 	}
 
-	static inline void eapi_white_BOLD(char text[100]) {
+	static inline void eapi_white_BOLD(const char* text) {
 		printf("\033[1;37m%.99s", text);
 	}
 
@@ -756,35 +827,35 @@ extern "C" {
 	}
 	
 	// Formatting: Underline
-	static inline void eapi_black_ULINE(char text[100]) {
+	static inline void eapi_black_ULINE(const char* text) {
 		printf("\033[4;30m%.99s", text);
 	}
 
-	static inline void eapi_red_ULINE(char text[100]) {
+	static inline void eapi_red_ULINE(const char* text) {
 		printf("\033[4;31m%.99s", text);
 	}
 
-	static inline void eapi_green_ULINE(char text[100]) {
+	static inline void eapi_green_ULINE(const char* text) {
 		printf("\033[4;32m%.99s", text);
 	}
 
-	static inline void eapi_blue_ULINE(char text[100]) {
+	static inline void eapi_blue_ULINE(const char* text) {
 		printf("\033[4;34m%.99s", text);
 	}
 	
-	static inline void eapi_yellow_ULINE(char text[100]) {
+	static inline void eapi_yellow_ULINE(const char* text) {
 		printf("\033[4;33m%.99s", text);
 	}
 
-	static inline void eapi_purple_ULINE(char text[100]) {
+	static inline void eapi_purple_ULINE(const char* text) {
 		printf("\033[4;35m%.99s", text);
 	}
 
-	static inline void eapi_cyan_ULINE(char text[100]) {
+	static inline void eapi_cyan_ULINE(const char* text) {
 		printf("\033[4;36m%.99s", text);
 	}
 
-	static inline void eapi_white_ULINE(char text[100]) {
+	static inline void eapi_white_ULINE(const char* text) {
 		printf("\033[4;37m%.99s", text);
 	}
 
@@ -793,73 +864,73 @@ extern "C" {
 	}
 
 	// Formatting: High Intensity
-	static inline void eapi_black_HINT(char text[100]) {
+	static inline void eapi_black_HINT(const char* text) {
 		printf("\033[0;90m%.99s", text);
 	}
 
-	static inline void eapi_red_HINT(char text[100]) {
+	static inline void eapi_red_HINT(const char* text) {
 		printf("\033[0;91m%.99s", text);
 	}
 
-	static inline void eapi_green_HINT(char text[100]) {
+	static inline void eapi_green_HINT(const char* text) {
 		printf("\033[0;92m%.99s", text);
 	}
 
-	static inline void eapi_blue_HINT(char text[100]) {
+	static inline void eapi_blue_HINT(const char* text) {
 		printf("\033[0;94m%.99s", text);
 	}
 
-	static inline void eapi_yellow_HINT(char text[100]) {
+	static inline void eapi_yellow_HINT(const char* text) {
 		printf("\033[0;93m%.99s", text);
 	}
 
-	static inline void eapi_purple_HINT(char text[100]) {
+	static inline void eapi_purple_HINT(const char* text) {
 		printf("\033[0;95m%.99s", text);
 	}
 
-	static inline void eapi_cyan_HINT(char text[100]) {
+	static inline void eapi_cyan_HINT(const char* text) {
 		printf("\033[0;96m%.99s", text);
 	}
 
-	static inline void eapi_white_HINT(char text[100]) {
+	static inline void eapi_white_HINT(const char* text) {
 		printf("\033[0;97m%.99s", text);
 	}
 
 	// Formatting: Bold High Intensity
-	static inline void eapi_black_BHI(char text[100]) {
+	static inline void eapi_black_BHI(const char* text) {
 		printf("\033[1;90m%.99s", text);
 	}
 
-	static inline void eapi_red_BHI(char text[100]) {
+	static inline void eapi_red_BHI(const char* text) {
 		printf("\033[1;91m%.99s", text);
 	}
 
-	static inline void eapi_green_BHI(char text[100]) {
+	static inline void eapi_green_BHI(const char* text) {
 		printf("\033[1;92m%.99s", text);
 	}
 
-	static inline void eapi_blue_BHI(char text[100]) {
+	static inline void eapi_blue_BHI(const char* text) {
 		printf("\033[1;94m%.99s", text);
 	}
 
-	static inline void eapi_yellow_BHI(char text[100]) {
+	static inline void eapi_yellow_BHI(const char* text) {
 		printf("\033[1;93m%.99s", text);
 	}
 
-	static inline void eapi_purple_BHI(char text[100]) {
+	static inline void eapi_purple_BHI(const char* text) {
 		printf("\033[1;95m%.99s", text);
 	}
 
-	static inline void eapi_cyan_BHI(char text[100]) {
+	static inline void eapi_cyan_BHI(const char* text) {
 		printf("\033[1;96m%.99s", text);
 	}
 	
-	static inline void eapi_white_BHI(char text[100]) {
+	static inline void eapi_white_BHI(const char* text) {
 		printf("\033[1;97m%.99s", text);
 	}
 
 	// Formatting: Flashing
-	static inline void eapi_FLASHING(char text[100]) {
+	static inline void eapi_FLASHING(const char* text) {
 		printf("\x1b[5m%.99s", text);
 	}
 
@@ -1021,42 +1092,62 @@ extern "C" {
 		#include <sys/types.h>
 		#define mkdir_os(path) mkdir(path, 0777)
 	#endif
+	#include <stdio.h>
+	#include <stdlib.h>
+
 	typedef enum {
-		FILE,
-		DIR
+		FILE_TYPE,
+		DIR_TYPE
 	} EapiType;
+
 	static inline int eapi_remove(const char *objname, EapiType type) {
 		char path[500];
+
 		if (objname == NULL) {
-        	return 0; 
-    	}
-		int written = snprintf(path, sizeof(path), "%s", objname);
-		if (written < 0 || (size_t)written >= sizeof(path)) {
+			errno = EINVAL;
 			return 0;
 		}
 
-		if (type == EAPI_FILE) {
-			FILE *fptr = fopen(path, "w");
-			if (fptr == NULL) {
-				return 0; 
-			}
-			fclose(fptr); 
-			return 1;     
-		} 
-		else if (type == EAPI_DIR) {
-			if (mkdir_os(path) != 0) {
-				return 0; 
-			}
-			return 1;     
+		int written = snprintf(path, sizeof(path), "%s", objname);
+		if (written < 0 || written >= (int)sizeof(path)) {
+			errno = ENAMETOOLONG;
+			return 0;
+		}
+
+		switch (type) {
+			case FILE_TYPE:
+				if (remove(path) != 0) {
+					return 0;
+				}
+				return 1;
+
+			case DIR_TYPE:
+				// Удаляем директорию
+				if (rmdir(path) != 0) {
+					return 0;
+				}
+				return 1;
+
+			default:
+				return 0;
 		}
 	}
 
 	static inline int eapi_newObject(const char *objname) {
 		char path[500];
 		if (objname == NULL) { return 0; }
-		int written = snprintf(path, sizeof(path), "%s", objname)
-		if (written < 0 || (size_t)wriitten >= sizeof(path)) { return 0; }
-		return 
+		int written = snprintf(path, sizeof(path), "%s", objname);
+		if (written < 0 || (size_t)written >= sizeof(path)) {
+			return 0;
+		}
+
+		FILE *file = fopen(path, "w");
+		if (file == NULL) {
+			printf("[EffortAPI] Error: unable to create file.");
+			return 0; // Error
+		}
+		fclose(file);
+		return 1; // 
 	}
 
 	/* ====== MATH ====== */
@@ -1080,20 +1171,8 @@ extern "C" {
 		srand(time(nullptr));
 	}
 
-	sstatic inline int eapi_rand(int max) {
+	static inline int eapi_rand(int max) {
 		int result;
-		result = rand() % max;
-		return result;
-	}
-
-	static inline double eapi_rand_double(double max) {
-		double result;
-		result = rand() % max;
-		return result;
-	}
-
-	static inline float eapi_rand_float(float max) {
-		float result;
 		result = rand() % max;
 		return result;
 	}
@@ -1129,13 +1208,40 @@ extern "C" {
 	}
 
 	static inline int eapi_math_division(int one, int two) {
+		if (two == 0) {
+			printf("[eAPI] Error: division by zero!");
+			return 0;
+		}
 		int result = one / two;
 		return result;
 	}
+	static inline int eapi_math_division_professional(int one, int two, int *error) {
+		if (two == 0) {
+			if (error) *error = 1;
+			fprintf(stderr, "[eAPI] Error: division by zero!\n");
+			return 0;
+		}
+		if (error) *error = 0;
+		return one / two;
+	}
 
 	static inline double eapi_math_division_double(double one, double two) {
+		if (two == 0.0) {
+			printf("[eAPI] Error: division by zero!");
+			return 0.0;
+		}
 		double DOUBLE_MODULE_result = one / two;
 		return DOUBLE_MODULE_result;
+	}
+
+	static inline double eapi_math_division_double_professional(double one, double two, int *error) {
+		if (two == 0.0) {
+			if (error) *error = 1;
+			fprintf(stderr, "[eAPI] Error: division by zero!\n");
+			return 0.0;
+		}
+		if (error) *error = 0;
+		return one / two;
 	}
 
 	static inline int eapi_math_sqrt(int num) {
@@ -1157,11 +1263,68 @@ extern "C" {
 		double DOUBLE_MODULE_result = pow(num, power);
 		return DOUBLE_MODULE_result;
 	}
+	
+	/* ====== OTHER ====== */
+	
+	/**
+		 * Swaps the values of two integers.
+		 * @param a Pointer to the first integer
+		 * @param b Pointer to the second integer
+		 *
+		 * If either pointer is NULL or both pointers are the same,
+		 * the function does nothing.
+	*/
+	static inline void eapi_swap(int *a, int *b) {
+		// Protection against NULL values or identical numbers
+		if (a == NULL || b == NULL || a == b) {
+			return;
+		}
+		int swapped_value = *a;
+		*a = *b;
+		*b = swapped_value;
+	}
+
+	/**
+		 * Swaps the values of two doubles.
+		 * @param a Pointer to the first double
+		 * @param b Pointer to the second double
+		 *
+		 * If either pointer is NULL or both pointers are the same,
+		 * the function does nothing.
+	*/
+	static inline void eapi_swap_double(double *a, double *b) {
+		// Protection against NULL values or identical numbers
+		if (a == NULL || b == NULL || a == b) {
+			return;
+		}
+		double swapped_value = *a;
+		*a = *b;
+		*b = swapped_value;
+	}
+
+	/**
+		 * Swaps the values of two floats.
+		 * @param a Pointer to the first float
+		 * @param b Pointer to the second float
+		 *
+		 * If either pointer is NULL or both pointers are the same,
+		 * the function does nothing.
+	*/
+	static inline void eapi_swap_float(float *a, float *b) {
+		// Protection against NULL values or identical numbers
+		if (a == NULL || b == NULL || a == b) {
+			return;
+		}
+		float swapped_value = *a;
+		*a = *b;
+		*b = swapped_value;
+	}
 
 #endif
 
+
 #ifdef __cplusplus
-extern "C" }
+}
 #endif
 
 #endif // EAPI_H
